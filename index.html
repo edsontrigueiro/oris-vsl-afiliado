@@ -420,35 +420,24 @@
       </div>
     </div>
 
+    <!-- PROBLEMA -->
     <section class="container">
-      <div class="eyebrow rv">A sensação</div>
-      <h2 class="rv">Você provavelmente já conhece essa sensação</h2>
-      <p class="p rv">Você faz uma operação. Green. Outra green. Mais uma. Até que vem um red — e aquele único resultado negativo começa a consumir o que você construiu nas operações anteriores.</p>
+      <div class="eyebrow rv">A semana</div>
+      <h2 class="rv">Você não perdeu um jogo. Perdeu a semana.</h2>
+      <p class="p rv">Segunda deu certo. Quarta deu certo. Sexta deu certo. Você fez tudo do jeito que tinha que ser feito.</p>
+      <p class="p rv">Aí veio domingo. <strong>Noventa minutos.</strong></p>
 
-      <div class="extrato rv" id="extrato">
+      <div class="extrato rv" id="extrato-perda" data-protege="0">
         <div class="ex-body">
-          <div class="linha g"><span class="nome"><span class="sq"></span>Operação 01</span><span class="val">+ R$ 180</span></div>
-          <div class="linha g"><span class="nome"><span class="sq"></span>Operação 02</span><span class="val">+ R$ 240</span></div>
-          <div class="linha g"><span class="nome"><span class="sq"></span>Operação 03</span><span class="val">+ R$ 150</span></div>
-          <div class="linha r" id="linha-red"><span class="nome"><span class="sq"></span>Operação 04</span><span class="val" id="val-red">&minus; R$ 300</span></div>
+          <div class="linha g"><span class="nome"><span class="sq"></span>Segunda</span><span class="val">+ R$ 180</span></div>
+          <div class="linha g"><span class="nome"><span class="sq"></span>Quarta</span><span class="val">+ R$ 240</span></div>
+          <div class="linha g"><span class="nome"><span class="sq"></span>Sexta</span><span class="val">+ R$ 150</span></div>
+          <div class="linha r"><span class="nome"><span class="sq"></span>Domingo</span><span class="val js-red">&minus; R$ 570</span></div>
         </div>
-        <div class="selo" id="selo"><span class="dot"></span>Proteção aplicada · valor reembolsado</div>
-        <div class="ex-pe"><span>Exemplo ilustrativo</span><span id="pe-txt">A conta é outra</span></div>
+        <div class="ex-pe"><span>Exemplo ilustrativo</span><span class="js-pe">Zerou</span></div>
       </div>
 
-      <p class="p rv">É aí que a ORIS muda a lógica. Nas operações elegíveis existe um mecanismo de proteção. <strong>Se a operação protegida der red, o valor é reembolsado conforme as regras da proteção.</strong></p>
-      <p class="p rv">Você continua exposto aos riscos e às condições da aposta, mas não precisa necessariamente absorver sozinho o impacto financeiro daquele red protegido.</p>
-
-      <div class="gancho rv">Mas antes disso, olhe de novo para os números ali em cima.</div>
-    </section>
-
-    <!-- BLOCO 2 — A matemática: reenquadra a dor -->
-    <section class="container">
-      <div class="eyebrow rv">A conta</div>
-      <h2 class="rv">Um green paga pouco. Um red cobra caro.</h2>
-      <p class="p rv">Foram três acertos para construir. Foi um erro para desmontar.</p>
-      <p class="p rv">Isso não é azar, é a estrutura do jogo. Operando em odds baixas, cada acerto devolve uma fração — e cada erro leva o valor inteiro. <strong>Você não precisa errar muito. Precisa errar uma vez.</strong></p>
-      <p class="p rv">É por isso que muita gente não perde por falta de análise. Perde por assimetria.</p>
+      <p class="p rv">E na segunda de manhã você está exatamente no mesmo lugar de onde saiu sete dias antes.</p>
 
       <div class="gancho rv">E quase todo mundo tenta resolver isso do mesmo jeito.</div>
     </section>
@@ -479,6 +468,26 @@
         <div class="passo rv"><div class="num">04</div><div><h3>Protege</h3><p>Nas operações elegíveis, a estrutura de proteção entra em ação conforme as regras estabelecidas.</p></div></div>
         <div class="passo rv"><div class="num">05</div><div><h3>Registra</h3><p>O resultado fica registrado no histórico.</p></div></div>
       </div>
+    </section>
+
+    <!-- DEMONSTRAÇÃO: a mesma semana com a proteção -->
+    <section class="container">
+      <div class="eyebrow rv">A mesma semana</div>
+      <h2 class="rv">Mesmos jogos. Mesmo domingo. Outro fim.</h2>
+      <p class="p rv">A diferença não está no resultado da partida — ela continua podendo dar errado. Está no que acontece depois do apito.</p>
+
+      <div class="extrato rv" id="extrato-protegido" data-protege="1">
+        <div class="ex-body">
+          <div class="linha g"><span class="nome"><span class="sq"></span>Segunda</span><span class="val">+ R$ 180</span></div>
+          <div class="linha g"><span class="nome"><span class="sq"></span>Quarta</span><span class="val">+ R$ 240</span></div>
+          <div class="linha g"><span class="nome"><span class="sq"></span>Sexta</span><span class="val">+ R$ 150</span></div>
+          <div class="linha r"><span class="nome"><span class="sq"></span>Domingo</span><span class="val js-red">&minus; R$ 570</span></div>
+        </div>
+        <div class="selo" id="selo-protegido"><span class="dot"></span>Proteção aplicada · valor reembolsado</div>
+        <div class="ex-pe"><span>Exemplo ilustrativo</span><span class="js-pe">Zerou</span></div>
+      </div>
+
+      <p class="p rv">Nas operações elegíveis, o valor do red é reembolsado conforme as regras da proteção. <strong>Você continua exposto ao risco do jogo. Não ao impacto inteiro dele.</strong></p>
     </section>
 
     <!-- BLOCO 5 — A restrição como prova -->
@@ -718,43 +727,59 @@ var LOGO = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVMAAACECAYAAAAtB8hXAA
     document.querySelector(".esteira").remove();
   }
 
-  /* extrato — dispara quando entra na tela */
-  var extrato = document.getElementById("extrato");
-  var linhas = extrato.querySelectorAll(".linha");
-  var selo = document.getElementById("selo");
-  var valRed = document.getElementById("val-red");
-  var linhaRed = document.getElementById("linha-red");
-  var peTxt = document.getElementById("pe-txt");
-  var timers = [], rodando = false;
+  /* extratos — cada um roda quando entra na tela */
+  var reduzido = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  function ciclo(){
-    timers.forEach(clearTimeout); timers = [];
-    linhas.forEach(function(x){ x.classList.remove("on"); });
-    linhaRed.classList.remove("hit"); selo.classList.remove("on");
-    valRed.innerHTML = "&minus; R$ 300";
-    peTxt.textContent = "A conta é outra";
+  function montaExtrato(el){
+    var protege = el.getAttribute("data-protege") === "1";
+    var linhas = el.querySelectorAll(".linha");
+    var vermelha = el.querySelector(".linha.r");
+    var valor = el.querySelector(".js-red");
+    var pe = el.querySelector(".js-pe");
+    var selo = el.querySelector(".selo");
+    var timers = [], rodando = false;
 
-    linhas.forEach(function(x,i){ timers.push(setTimeout(function(){ x.classList.add("on"); }, 300 + i*600)); });
-    timers.push(setTimeout(function(){ linhaRed.classList.add("hit"); }, 2400));
-    timers.push(setTimeout(function(){ selo.classList.add("on"); }, 2800));
-    timers.push(setTimeout(function(){
-      valRed.innerHTML = '<s>&minus; R$ 300</s>R$ 0';
-      peTxt.textContent = "Impacto reduzido";
-    }, 3400));
-    timers.push(setTimeout(ciclo, 9000));
+    function parar(){ timers.forEach(clearTimeout); timers = []; }
+
+    function ciclo(){
+      parar();
+      linhas.forEach(function(x){ x.classList.remove("on"); });
+      vermelha.classList.remove("hit");
+      if (selo) selo.classList.remove("on");
+      valor.innerHTML = "&minus; R$ 570";
+      pe.textContent = "Zerou";
+
+      linhas.forEach(function(x,i){
+        timers.push(setTimeout(function(){ x.classList.add("on"); }, 300 + i*600));
+      });
+      timers.push(setTimeout(function(){ vermelha.classList.add("hit"); }, 2400));
+
+      if (protege){
+        timers.push(setTimeout(function(){ selo.classList.add("on"); }, 3000));
+        timers.push(setTimeout(function(){
+          valor.innerHTML = '<s>&minus; R$ 570</s>R$ 0';
+          pe.textContent = "Impacto reduzido";
+        }, 3600));
+      }
+      timers.push(setTimeout(ciclo, protege ? 9000 : 7200));
+    }
+
+    if (reduzido){
+      linhas.forEach(function(x){ x.classList.add("on"); });
+      if (selo) selo.classList.add("on");
+      return;
+    }
+    if ("IntersectionObserver" in window){
+      new IntersectionObserver(function(es){
+        es.forEach(function(e){
+          if (e.isIntersecting && !rodando){ rodando = true; ciclo(); }
+          else if (!e.isIntersecting && rodando){ rodando = false; parar(); }
+        });
+      }, {threshold:.35}).observe(el);
+    } else { ciclo(); }
   }
 
-  var reduzido = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (reduzido){
-    linhas.forEach(function(x){ x.classList.add("on"); }); selo.classList.add("on");
-  } else if ("IntersectionObserver" in window){
-    new IntersectionObserver(function(es){
-      es.forEach(function(e){
-        if (e.isIntersecting && !rodando){ rodando = true; ciclo(); }
-        else if (!e.isIntersecting && rodando){ rodando = false; timers.forEach(clearTimeout); timers = []; }
-      });
-    }, {threshold:.35}).observe(extrato);
-  } else { ciclo(); }
+  document.querySelectorAll(".extrato").forEach(montaExtrato);
 
   /* barra fixa: aparece depois que o vídeo sai da tela */
   var palco = document.getElementById("palco"), barra = document.getElementById("barra");
