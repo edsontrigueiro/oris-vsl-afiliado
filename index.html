@@ -546,13 +546,13 @@
     <div class="fecho container">
       <div class="painel rv">
         <div class="eyebrow">A decisão</div>
-        <h2>O red vem de qualquer jeito. <em>Sozinho é opcional.</em></h2>
-        <p class="sub">Ele não depende dessa página. Vem neste fim de semana, como vem em todos. A única variável é se vai te encontrar dentro ou fora de uma estrutura.</p>
+        <h2>Domingo que vem <em>tem jogo.</em></h2>
+        <p class="sub">Uma hora o red vem — isso não depende de você nem desta página. O que depende é se, quando ele vier, você vai absorver sozinho outra vez.</p>
         <div class="acoes">
           <a class="btn" id="cta-2" target="_blank" rel="nofollow sponsored noopener">Criar minha conta na ORIS <span class="ar">&#8594;</span></a>
           <span class="micro">Cadastro gratuito · leva 2 minutos</span>
         </div>
-        <p class="nota">Sem contagem regressiva. Sem vaga limitada. <b>Só uma decisão que precisa acontecer antes do próximo red.</b></p>
+        <p class="nota">Sem contagem regressiva. Sem vaga limitada. <b>Só uma decisão que precisa acontecer antes do próximo domingo.</b></p>
       </div>
     </div>
 
@@ -580,12 +580,30 @@
 
 var CONFIG = {
 
-  // Modelo do link de cadastro. {REF} é trocado pelo código que vier na URL.
-  // Ajuste para o formato real da Oris. Ex.: "https://app.orisclub.com/cadastro?ref={REF}"
-  BASE_CADASTRO: "https://app.orisclub.com/cadastro?ref={REF}",
+  // ===============================================================
+  // LINK DE AFILIADO
+  //
+  // Todos os links da Oris têm a mesma base e só muda o final.
+  // Pegue um link real e troque a parte que muda por  {REF}
+  //
+  //   link real            ->  https://app.orisclub.com/register?ref=01KVERS1A3
+  //   como fica aqui       ->  https://app.orisclub.com/register?ref={REF}
+  //
+  // Funciona igual se o código estiver no meio do endereço:
+  //   https://app.orisclub.com/r/{REF}/register
+  //
+  // A partir daí, cada afiliado divulga a página com o código dele:
+  //   vsl.orisclub.club/?a=01KVERS1A3
+  //   vsl.orisclub.club/?a=CODIGO-DO-OUTRO
+  // ===============================================================
+  BASE_CADASTRO: "https://app.orisclub.com/register?ref={REF}",
 
-  // Usado quando a pessoa cai na página SEM ?ref= (link institucional da Oris).
-  REF_PADRAO: "",
+  // Para onde vai quem abrir a página sem código nenhum.
+  LINK_PADRAO: "https://app.orisclub.com/register",
+
+  // Opcional: só use se algum parceiro tiver um link fora do padrão acima.
+  // "apelido": { nome: "Fulano S.", link: "https://link-completo-dele" }
+  AFILIADOS: {},
 
   // Cole a URL do YouTube em QUALQUER formato:
   // youtu.be/ID  ·  youtube.com/watch?v=ID  ·  youtube.com/embed/ID
@@ -628,17 +646,24 @@ var LOGO = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVMAAACECAYAAAAtB8hXAA
     return String(v).replace(/[^A-Za-z0-9._-]/g, "").slice(0, tamanho || 40);
   }
 
-  var REF = limpo(params.get("ref") || params.get("a") || CONFIG.REF_PADRAO);
+  var CODIGO = limpo(params.get("a") || params.get("ref"));
+  var registro = CONFIG.AFILIADOS ? CONFIG.AFILIADOS[CODIGO.toLowerCase()] : null;
+  var destino, nomeParceiro = "";
 
-  var destino;
-  if (REF && CONFIG.BASE_CADASTRO.indexOf("{REF}") !== -1){
-    destino = CONFIG.BASE_CADASTRO.replace("{REF}", encodeURIComponent(REF));
+  if (registro){
+    // 1º) tabela: link completo e próprio do afiliado
+    destino = (typeof registro === "string") ? registro : registro.link;
+    if (registro.nome) nomeParceiro = registro.nome;
+  } else if (CODIGO && CONFIG.BASE_CADASTRO && CONFIG.BASE_CADASTRO.indexOf("{REF}") !== -1){
+    // 2º) modelo único com o código da URL
+    destino = CONFIG.BASE_CADASTRO.replace("{REF}", encodeURIComponent(CODIGO));
   } else {
-    // sem ref: tira o parâmetro do modelo e manda para o cadastro institucional
-    destino = CONFIG.BASE_CADASTRO
-      .replace(/[?&][^?&=]*=\{REF\}/, "")
-      .replace("{REF}", "");
+    // 3º) ninguém identificado: cadastro institucional
+    destino = CONFIG.LINK_PADRAO || "#";
   }
+
+  // segurança: só http(s). Nunca aceita URL vinda da query (evita redirecionamento aberto)
+  if (!/^https?:\/\//i.test(destino)) destino = CONFIG.LINK_PADRAO || "#";
 
   // repassa as UTMs da campanha para o destino, se houver
   var utms = [];
@@ -678,7 +703,7 @@ var LOGO = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVMAAACECAYAAAAtB8hXAA
   document.getElementById("cond-forma").textContent  = c.forma  || vazio;
   document.getElementById("cond-prazo").textContent  = c.prazo  || vazio;
 
-  var nomeParceiro = limpo(params.get("nome"), 30).replace(/[._-]+/g, " ").trim();
+  if (!nomeParceiro) nomeParceiro = limpo(params.get("nome"), 30).replace(/[._-]+/g, " ").trim();
   document.getElementById("aviso-publicidade").textContent = nomeParceiro
     ? "Publicidade. Página de divulgação veiculada por " + nomeParceiro + ", parceiro remunerado da ORIS Club."
     : "Publicidade. Página de divulgação veiculada por parceiro remunerado da ORIS Club.";
