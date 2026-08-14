@@ -101,6 +101,20 @@
   .frame-bar .l{display:flex;align-items:center;gap:9px}
   .video{position:relative;width:100%;aspect-ratio:16/9;background:#000}
   .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .video.vazio{
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(160deg,#141518,#0B0C0E);
+  }
+  .video.vazio::before{
+    content:"";width:74px;height:74px;border-radius:50%;
+    border:1px solid rgba(255,94,4,.4);background:var(--orange-t);
+  }
+  .video.vazio::after{
+    content:"Cole a URL do vídeo em CONFIG.VIDEO";
+    position:absolute;bottom:26px;left:0;right:0;text-align:center;
+    font-family:var(--mono);font-size:10px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--dim);
+  }
   .som{
     margin-top:16px;display:flex;align-items:center;justify-content:center;gap:9px;
     font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;
@@ -144,21 +158,76 @@
   @media (min-width:820px){ .barra{display:none} }
 
   /* esteira */
-  .esteira{padding:58px 0;overflow:hidden;position:relative}
-  .esteira::before,.esteira::after{content:"";position:absolute;top:0;bottom:0;width:120px;z-index:3;pointer-events:none}
-  .esteira::before{left:0;background:linear-gradient(90deg,var(--bg),transparent)}
-  .esteira::after{right:0;background:linear-gradient(270deg,var(--bg),transparent)}
-  .trilho{display:flex;gap:14px;width:max-content;will-change:transform}
-  .trilho.a{animation:corre 52s linear infinite}
-  .trilho.b{animation:corre-r 58s linear infinite;margin-top:14px}
-  .esteira:hover .trilho{animation-play-state:paused}
+  .esteira{padding:70px 0 66px;position:relative}
+  .esteira-topo{text-align:center;margin-bottom:34px}
+  .esteira-topo .eyebrow{margin-bottom:14px}
+  .esteira-topo h2{
+    margin:0 auto;max-width:20ch;
+    font-size:clamp(23px,3.4vw,32px);letter-spacing:-.03em;
+  }
+  .esteira-topo .nt{
+    margin-top:14px;font-family:var(--mono);font-size:10.5px;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--dim);
+  }
+  .pista{
+    overflow:hidden;position:relative;
+    mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);
+  }
+  .trilho{display:flex;gap:16px;width:max-content;will-change:transform}
+  .trilho.a{animation:corre 64s linear infinite}
+  .trilho.b{animation:corre-r 72s linear infinite;margin-top:16px}
+  .pista:hover .trilho{animation-play-state:paused}
   @keyframes corre{from{transform:translateX(0)}to{transform:translateX(-50%)}}
   @keyframes corre-r{from{transform:translateX(-50%)}to{transform:translateX(0)}}
-  .depo{width:330px;flex:none;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px 22px;transition:border-color .25s var(--ease),transform .25s var(--ease)}
-  .depo:hover{border-color:var(--line-2);transform:translateY(-3px)}
-  .depo .txt{font-size:14.5px;color:#D6D3CE;line-height:1.58}
-  .depo .quem{margin-top:15px;display:flex;align-items:center;gap:11px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
-  .av{width:28px;height:28px;border-radius:50%;flex:none;background:var(--orange-t);border:1px solid rgba(255,94,4,.3);display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;color:#FFAF78;letter-spacing:0}
+
+  .depo{
+    position:relative;width:392px;flex:none;
+    border:1px solid var(--line);border-radius:18px;
+    background:linear-gradient(168deg,#1B1D21,var(--panel) 58%);
+    padding:30px 28px 24px;
+    display:flex;flex-direction:column;
+    transition:border-color .3s var(--ease),transform .3s var(--ease),box-shadow .3s var(--ease);
+  }
+  .depo::after{
+    content:"";position:absolute;left:28px;right:28px;top:0;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(255,94,4,.5),transparent);
+    opacity:0;transition:opacity .3s var(--ease);
+  }
+  .depo:hover{
+    border-color:rgba(255,94,4,.3);transform:translateY(-5px);
+    box-shadow:0 26px 46px -28px rgba(0,0,0,.95);
+  }
+  .depo:hover::after{opacity:1}
+
+  .depo .marca{
+    font-family:var(--display);font-weight:900;font-size:30px;line-height:.7;
+    color:var(--orange);opacity:.55;margin-bottom:14px;height:16px;
+  }
+  .depo .frase{
+    font-weight:700;font-size:20px;line-height:1.26;letter-spacing:-.024em;
+    color:var(--text);margin-bottom:12px;
+  }
+  .depo .txt{
+    font-size:13.5px;line-height:1.62;color:var(--muted);flex:1;
+  }
+  .depo .pe{
+    display:flex;align-items:center;gap:13px;
+    margin-top:22px;padding-top:17px;border-top:1px solid var(--line);
+  }
+  .av{
+    width:40px;height:40px;border-radius:50%;flex:none;position:relative;
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--display);font-weight:800;font-size:14px;color:#0B0C0E;
+    background:linear-gradient(150deg,#FFA05C,var(--orange));
+    box-shadow:0 0 0 1px rgba(255,94,4,.28), 0 0 0 5px rgba(255,94,4,.07);
+  }
+  .depo .quem{display:flex;flex-direction:column;gap:3px;min-width:0}
+  .depo .quem .n{font-size:14.5px;font-weight:600;letter-spacing:-.012em}
+  .depo .quem .r{
+    font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--dim);
+  }
 
   /* seções */
   section{padding:96px 0}
@@ -290,7 +359,9 @@
     .hero{padding-top:28px}
     section{padding:74px 0}
     .esteira::before,.esteira::after{width:56px}
-    .depo{width:270px}
+    .depo{width:308px}
+    .depo .frase{font-size:18px}
+    .esteira{padding:54px 0 50px}
     .a-in,.q{padding-right:48px}
     .manifesto{padding-left:20px}
   }
@@ -337,9 +408,16 @@
       </div>
     </div>
 
-    <div class="esteira">
-      <div class="trilho a" id="trilho-a"></div>
-      <div class="trilho b" id="trilho-b"></div>
+    <div class="esteira" id="esteira">
+      <div class="container esteira-topo">
+        <div class="eyebrow rv">Quem já está dentro</div>
+        <h2 class="rv">O que dizem quem usa a plataforma</h2>
+        <p class="nt rv">Depoimentos enviados por usuários da ORIS</p>
+      </div>
+      <div class="pista">
+        <div class="trilho a" id="trilho-a"></div>
+        <div class="trilho b" id="trilho-b"></div>
+      </div>
     </div>
 
     <section class="container">
@@ -493,9 +571,16 @@
 
 var CONFIG = {
 
-  LINK: "",        // link de afiliado do parceiro
-  VIDEO: "",       // URL de EMBED da VSL (youtube.com/embed/ID)
-  PARCEIRO: "",    // nome do afiliado
+  // Modelo do link de cadastro. {REF} é trocado pelo código que vier na URL.
+  // Ajuste para o formato real da Oris. Ex.: "https://app.orisclub.com/cadastro?ref={REF}"
+  BASE_CADASTRO: "https://app.orisclub.com/cadastro?ref={REF}",
+
+  // Usado quando a pessoa cai na página SEM ?ref= (link institucional da Oris).
+  REF_PADRAO: "",
+
+  // Cole a URL do YouTube em QUALQUER formato:
+  // youtu.be/ID  ·  youtube.com/watch?v=ID  ·  youtube.com/embed/ID
+  VIDEO: "",
 
   condicoes: {
     quais:  "",    // ex.: operações marcadas como Protegida no painel
@@ -506,12 +591,16 @@ var CONFIG = {
 
   // TROQUE POR DEPOIMENTOS REAIS antes de publicar.
   depoimentos: [
-    { txt: "[EXEMPLO — substituir por depoimento real coletado com usuário]", nome: "Exemplo", local: "—" },
-    { txt: "[EXEMPLO — substituir por depoimento real coletado com usuário]", nome: "Exemplo", local: "—" },
-    { txt: "[EXEMPLO — substituir por depoimento real coletado com usuário]", nome: "Exemplo", local: "—" },
-    { txt: "[EXEMPLO — substituir por depoimento real coletado com usuário]", nome: "Exemplo", local: "—" },
-    { txt: "[EXEMPLO — substituir por depoimento real coletado com usuário]", nome: "Exemplo", local: "—" },
-    { txt: "[EXEMPLO — substituir por depoimento real coletado com usuário]", nome: "Exemplo", local: "—" }
+    { txt: "O que mais me chamou atenção na Oris foi a proteção. Já aconteceu várias vezes de eu ter uma sequência boa e um único red acabar com o resultado. A proposta de proteger determinadas operações fez muito sentido para mim.", nome: "Beatriz S.", destaque: "um único red acabar com o resultado" },
+    { txt: "Eu já tinha usado grupos de sinais antes e, sinceramente, a proposta da Oris é outra coisa. O diferencial é ter uma estrutura de análise e proteção por trás da operação.", nome: "Rafael M.", destaque: "a proposta da Oris é outra coisa" },
+    { txt: "Gostei muito da ideia de não precisar ficar procurando jogo o dia inteiro. A Oris faz toda a análise e você recebe somente as operações que passam pelos critérios.", nome: "Camila F.", destaque: "não precisar ficar procurando jogo o dia inteiro" },
+    { txt: "O que me fez testar foi justamente a proteção contra o red. Depois que entendi como funciona, percebi que não era só mais uma plataforma de palpites.", nome: "Gabriel M.", destaque: "não era só mais uma plataforma de palpites" },
+    { txt: "A interface e a organização da plataforma passam muita confiança. Tudo é bem mais claro do que ficar acompanhando informação em grupo de WhatsApp.", nome: "Juliana R.", destaque: "Tudo é bem mais claro" },
+    { txt: "O maior problema para mim sempre foi o impacto de um red depois de várias operações positivas. A proposta da Oris resolve justamente essa parte que mais incomodava.", nome: "Lucas A.", destaque: "o impacto de um red depois de várias operações positivas" },
+    { txt: "Entrei pela curiosidade e fiquei pela proposta. A combinação entre análise, filtro e proteção é o que realmente diferencia a Oris para mim.", nome: "Ana Carolina L.", destaque: "Entrei pela curiosidade e fiquei pela proposta" },
+    { txt: "O mais interessante é que a Oris não tenta transformar todo jogo em oportunidade. Existe um processo antes da operação chegar até você, e isso muda completamente a experiência.", nome: "Bruno C.", destaque: "não tenta transformar todo jogo em oportunidade" },
+    { txt: "Eu não queria mais depender de ficar acompanhando vários grupos e opiniões diferentes. Gostei da ideia de ter uma plataforma que organiza a análise e ainda oferece proteção nas operações elegíveis.", nome: "Mariana C.", destaque: "organiza a análise e ainda oferece proteção" },
+    { txt: "Para mim, o grande diferencial é saber que, quando uma operação elegível dá red, existe uma estrutura de proteção. Isso muda bastante a forma como você encara a operação.", nome: "Matheus O.", destaque: "existe uma estrutura de proteção" }
   ]
 };
 
@@ -522,9 +611,57 @@ var LOGO = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVMAAACECAYAAAAtB8hXAA
 (function(){
   document.getElementById("logo").src = LOGO;
 
-  var l = CONFIG.LINK || "#";
-  ["cta-1","cta-2","cta-barra"].forEach(function(id){ document.getElementById(id).href = l; });
-  if (CONFIG.VIDEO) document.getElementById("vsl").src = CONFIG.VIDEO;
+  /* ---- afiliado vindo da URL: ?ref=CODIGO ---- */
+  var params = new URLSearchParams(window.location.search);
+
+  function limpo(v, tamanho){
+    if (!v) return "";
+    return String(v).replace(/[^A-Za-z0-9._-]/g, "").slice(0, tamanho || 40);
+  }
+
+  var REF = limpo(params.get("ref") || params.get("a") || CONFIG.REF_PADRAO);
+
+  var destino;
+  if (REF && CONFIG.BASE_CADASTRO.indexOf("{REF}") !== -1){
+    destino = CONFIG.BASE_CADASTRO.replace("{REF}", encodeURIComponent(REF));
+  } else {
+    // sem ref: tira o parâmetro do modelo e manda para o cadastro institucional
+    destino = CONFIG.BASE_CADASTRO
+      .replace(/[?&][^?&=]*=\{REF\}/, "")
+      .replace("{REF}", "");
+  }
+
+  // repassa as UTMs da campanha para o destino, se houver
+  var utms = [];
+  params.forEach(function(valor, chave){
+    if (chave.indexOf("utm_") === 0) utms.push(encodeURIComponent(chave) + "=" + encodeURIComponent(valor));
+  });
+  if (utms.length){
+    destino += (destino.indexOf("?") === -1 ? "?" : "&") + utms.join("&");
+  }
+
+  ["cta-1","cta-2","cta-barra"].forEach(function(id){ document.getElementById(id).href = destino; });
+  /* ---- normaliza qualquer URL do YouTube para embed ---- */
+  function urlDoVideo(u){
+    if (!u) return "";
+    u = String(u).trim();
+    var id = "";
+    var m = u.match(/(?:youtu\.be\/|\/embed\/|\/shorts\/|[?&]v=)([A-Za-z0-9_-]{11})/);
+    if (m) id = m[1];
+    else if (/^[A-Za-z0-9_-]{11}$/.test(u)) id = u;   // colou só o ID
+    if (!id) return u;                                 // Vimeo ou outro host: usa como veio
+    return "https://www.youtube-nocookie.com/embed/" + id +
+           "?rel=0&modestbranding=1&playsinline=1";
+  }
+
+  var srcVideo = urlDoVideo(CONFIG.VIDEO);
+  if (srcVideo){
+    document.getElementById("vsl").src = srcVideo;
+  } else {
+    // sem URL ainda: mantém a moldura para o layout não colapsar
+    document.querySelector(".video").classList.add("vazio");
+    document.getElementById("vsl").remove();
+  }
 
   var c = CONFIG.condicoes, vazio = "— a definir —";
   document.getElementById("cond-quais").textContent  = c.quais  || vazio;
@@ -532,19 +669,40 @@ var LOGO = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVMAAACECAYAAAAtB8hXAA
   document.getElementById("cond-forma").textContent  = c.forma  || vazio;
   document.getElementById("cond-prazo").textContent  = c.prazo  || vazio;
 
-  document.getElementById("aviso-publicidade").textContent =
-    "Publicidade. Página de divulgação veiculada por " + (CONFIG.PARCEIRO || "[parceiro]") +
-    ", parceiro remunerado da ORIS Club.";
+  var nomeParceiro = limpo(params.get("nome"), 30).replace(/[._-]+/g, " ").trim();
+  document.getElementById("aviso-publicidade").textContent = nomeParceiro
+    ? "Publicidade. Página de divulgação veiculada por " + nomeParceiro + ", parceiro remunerado da ORIS Club."
+    : "Publicidade. Página de divulgação veiculada por parceiro remunerado da ORIS Club.";
 
   /* esteira */
   function cartao(d){
     var el = document.createElement("div"); el.className = "depo";
-    var t = document.createElement("div"); t.className = "txt"; t.textContent = d.txt;
-    var q = document.createElement("div"); q.className = "quem";
+
+    var mk = document.createElement("div"); mk.className = "marca"; mk.textContent = "\u201C";
+    el.appendChild(mk);
+
+    // o trecho em destaque (literal do depoimento) sobe como frase de abertura
+    var corpo = d.txt;
+    if (d.destaque && d.txt.indexOf(d.destaque) !== -1){
+      var f = document.createElement("div"); f.className = "frase";
+      f.textContent = d.destaque.charAt(0).toUpperCase() + d.destaque.slice(1);
+      el.appendChild(f);
+    }
+
+    var t = document.createElement("div"); t.className = "txt"; t.textContent = corpo;
+    el.appendChild(t);
+
+    var pe = document.createElement("div"); pe.className = "pe";
     var a = document.createElement("span"); a.className = "av";
     a.textContent = (d.nome || "?").trim().charAt(0).toUpperCase();
-    var n = document.createElement("span"); n.textContent = d.nome + (d.local ? " · " + d.local : "");
-    q.appendChild(a); q.appendChild(n); el.appendChild(t); el.appendChild(q);
+    var q = document.createElement("div"); q.className = "quem";
+    var n = document.createElement("span"); n.className = "n"; n.textContent = d.nome;
+    var r = document.createElement("span"); r.className = "r";
+    r.textContent = d.local ? d.local : "Usuário da plataforma";
+    q.appendChild(n); q.appendChild(r);
+    pe.appendChild(a); pe.appendChild(q);
+    el.appendChild(pe);
+
     return el;
   }
   var lista = CONFIG.depoimentos || [];
