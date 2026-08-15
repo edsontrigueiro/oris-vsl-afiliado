@@ -648,7 +648,9 @@ var LOGO = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVMAAACECAYAAAAtB8hXAA
     return String(v).replace(/[^A-Za-z0-9._-]/g, "").slice(0, tamanho || 40);
   }
 
-  var CODIGO = limpo(params.get("a") || params.get("ref"));
+  var doPath = (window.location.pathname || "").split("/").filter(Boolean).pop() || "";
+  if (doPath.indexOf(".") !== -1) doPath = "";
+  var CODIGO = limpo(params.get("a") || params.get("ref") || doPath);
   var registro = CONFIG.AFILIADOS ? CONFIG.AFILIADOS[CODIGO.toLowerCase()] : null;
   var destino, nomeParceiro = "";
 
