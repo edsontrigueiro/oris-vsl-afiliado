@@ -51,6 +51,20 @@
   .topo-in{display:flex;justify-content:center}
   .logo{height:26px;width:auto}
 
+
+  /* ---- seletor de idioma ---- */
+  .topo-in{position:relative}
+  .idiomas{position:absolute;right:0;top:50%;transform:translateY(-50%);display:flex;gap:5px}
+  .idiomas a{display:flex;align-items:center;justify-content:center;text-decoration:none;
+    font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.1em;
+    color:var(--dim);background:transparent;border:1px solid var(--line);border-radius:5px;
+    width:30px;height:26px;cursor:pointer;transition:.25s var(--ease)}
+  .idiomas a:hover{color:var(--text);border-color:var(--line-2)}
+  .idiomas a[aria-current="true"]{color:var(--orange);border-color:rgba(255,94,4,.45);background:var(--orange-t)}
+  @media(max-width:520px){
+    .idiomas{gap:4px}
+    .idiomas a{width:27px;height:24px;font-size:9.5px}
+  }
   .hero{padding:38px 0 0;text-align:center}
   .pill{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#FFAF78;background:var(--orange-t);border:1px solid rgba(255,94,4,.26);border-radius:999px;padding:7px 15px 7px 11px}
   .dot{width:6px;height:6px;border-radius:50%;background:var(--orange);animation:pulse 2.4s infinite;flex:none}
@@ -300,314 +314,274 @@
 <div class="progresso"><span id="progresso-barra"></span></div>
 <div class="aura"></div>
 <div class="malha"></div>
-
 <div class="shell">
-
-  <header class="topo">
-    <div class="container topo-in"><img class="logo" id="logo" alt="ORIS Club"></div>
-  </header>
-
-  <main>
-
-    <!-- 01 · DOBRA -->
-    <div class="hero container">
-      <div class="rv in carga" style="animation-delay:60ms"><span class="pill"><span class="dot"></span>Duas formas de operar · Uma tecnologia</span></div>
-      <h1 class="rv in carga" style="animation-delay:180ms">A pergunta nunca foi como <em>acertar mais.</em></h1>
-      <p class="apoio rv in carga" style="animation-delay:300ms">É como operar melhor. E agora isso tem duas formas.</p>
-      <p class="lead rv in carga" style="animation-delay:400ms">Assista à apresentação. No final você vai saber qual das duas modalidades é a sua.</p>
-
-      <div class="palco rv in carga" id="palco" style="animation-delay:500ms">
-        <div class="frame">
-          <div class="frame-bar">
-            <span class="l"><span class="dot"></span>Apresentação</span>
-            <span>ORIS Club</span>
-          </div>
-          <div class="video"><iframe id="vsl" title="Como a ORIS funciona" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
-        </div>
-        <div class="som"><span class="ic">&#9654;</span>Assista com o som ligado</div>
-      </div>
-
-      <div class="acoes rv">
-        <a class="btn" id="cta-1" target="_blank" rel="nofollow sponsored noopener">Criar minha conta na ORIS <span class="ar">&#8594;</span></a>
-        <span class="micro">Cadastro gratuito · você escolhe a modalidade dentro da plataforma</span>
-      </div>
-    </div>
-
-    <!-- 02 · A SEMANA -->
-    <section class="container">
-      <div class="eyebrow rv">A semana</div>
-      <h2 class="rv">Você não perdeu um jogo. Perdeu a semana.</h2>
-      <p class="p rv">Segunda deu certo. Quarta deu certo. Sexta deu certo. Você fez tudo do jeito que tinha que ser feito.</p>
-      <p class="p rv">Aí veio domingo. <strong>Noventa minutos.</strong></p>
-
-      <div class="semana rv" id="semana">
-        <div class="sem-body">
-          <div class="barra-dia g" data-larg="32"><div class="top"><span class="d">Segunda</span><span class="u">+ R$ 180</span></div><div class="trilha"><div class="preenche"></div></div></div>
-          <div class="barra-dia g" data-larg="42"><div class="top"><span class="d">Quarta</span><span class="u">+ R$ 240</span></div><div class="trilha"><div class="preenche"></div></div></div>
-          <div class="barra-dia g" data-larg="26"><div class="top"><span class="d">Sexta</span><span class="u">+ R$ 150</span></div><div class="trilha"><div class="preenche"></div></div></div>
-          <div class="barra-dia r" data-larg="100" id="dia-red"><div class="top"><span class="d">Domingo</span><span class="u" id="valor-red">&minus; R$ 570</span></div><div class="trilha"><div class="preenche"></div></div></div>
-        </div>
-        <div class="selo-prot" id="selo-prot"><span class="dot"></span>Proteção aplicada · valor reembolsado</div>
-        <div class="sem-pe"><span>Exemplo ilustrativo</span><span class="res" id="res-semana">Semana zerada</span></div>
-      </div>
-
-      <p class="p rv">E na segunda de manhã você está exatamente no mesmo lugar de onde saiu sete dias antes.</p>
-      <p class="p rv">Foi olhando para esse domingo que a ORIS foi construída.</p>
-      <div class="gancho rv">Porque quase todo mundo tenta resolver isso do mesmo jeito.</div>
-    </section>
-
-    <!-- 03 · A VIRADA -->
-    <section class="container">
-      <div class="eyebrow rv">A virada</div>
-      <h2 class="rv">Todo mundo tenta acertar mais. A ORIS foi pelo outro lado.</h2>
-      <p class="p rv">Acertar mais é o caminho óbvio. É também o caminho que ninguém controla, porque ninguém controla o resultado de uma partida.</p>
-      <p class="p rv">A pergunta que a ORIS fez foi outra: <strong>se o erro vai acontecer de qualquer forma, o que dá para fazer com o impacto dele — e com o trabalho que ele te custa?</strong></p>
-      <p class="p rv">Mudar a pergunta muda o produto inteiro.</p>
-
-      <div class="manifesto rv">
-        <div class="m">Não prometemos que o jogo vai dar green.</div>
-        <div class="m">Mudamos a forma como você participa dele.</div>
-      </div>
-    </section>
-
-    <!-- 04 · A EMPRESA -->
-    <section class="container">
-      <div class="eyebrow rv">A empresa</div>
-      <h2 class="rv">Uma empresa de tecnologia que opera no mercado esportivo. Não o contrário.</h2>
-
-      <div class="quatro rv">
-        <div>NÃO SOMOS TIPSTER.</div>
-        <div>NÃO SOMOS CURSO.</div>
-        <div>NÃO PROMETEMOS GREEN.</div>
-        <div>SOMOS TECNOLOGIA.</div>
-      </div>
-
-      <p class="p rv">O que a ORIS constrói é infraestrutura: análise, critério, filtro e execução.</p>
-    </section>
-
-    <!-- 05 · SELETOR -->
-    <section class="container">
-      <div class="eyebrow rv">A escolha</div>
-      <h2 class="rv">Você escolhe o quanto quer estar no <em>controle.</em></h2>
-      <p class="p rv">A ORIS não obriga ninguém a operar de uma única maneira. A tecnologia é a mesma. O que muda é quem aperta o botão.</p>
-
-      <div class="seletor rv" role="tablist">
-        <button class="cartao" role="tab" data-mod="protecao" aria-selected="true">
-          <span class="tag">Modalidade 01</span>
-          <div class="nome">Proteção</div>
-          <div class="res">Você opera. A ORIS envia a operação analisada, você decide se entra — e se der RED, o valor volta para você.</div>
-          <span class="abrir">Ver como funciona →</span>
-        </button>
-        <button class="cartao" role="tab" data-mod="automacao" aria-selected="false">
-          <span class="tag">Modalidade 02</span>
-          <div class="nome">Automação</div>
-          <div class="res">Você não opera. A tecnologia executa tudo por você, do começo ao fim, sem você configurar nada.</div>
-          <span class="abrir">Ver como funciona →</span>
-        </button>
-      </div>
-
-      <div class="painel-mod on" id="mod-protecao">
-        <div class="bloco">
-          <h3>Como funciona</h3>
-          <p class="p">A grade do dia inteira passa pelo sistema. O que não atende ao critério é reprovado antes de chegar na sua tela. O que passa, chega até você com a análise pronta — e você decide se entra.</p>
-          <p class="p"><strong>Se a operação der RED, o valor é reembolsado.</strong> A proteção vale para todas as operações enviadas pela ORIS.</p>
-        </div>
-        <div class="bloco">
-          <h3>Para quem é</h3>
-          <p class="p">Para quem gosta de olhar a operação antes de entrar. Quem quer decidir. Quem não abre mão do controle.</p>
-        </div>
-        <div class="condicoes">
-          <div class="cond-t">Condições da proteção</div>
-          <dl class="cond-grid">
-            <div class="cond"><dt>Quais operações</dt><dd id="cond-quais"></dd></div>
-            <div class="cond"><dt>Limite</dt><dd id="cond-limite"></dd></div>
-            <div class="cond"><dt>Forma</dt><dd id="cond-forma"></dd></div>
-            <div class="cond"><dt>Prazo</dt><dd id="cond-prazo"></dd></div>
-          </dl>
-        </div>
-      </div>
-
-      <div class="painel-mod" id="mod-automacao">
-        <div class="bloco">
-          <h3>Como funciona</h3>
-          <p class="p">Aqui você não configura nada. Não escolhe estratégia, não define parâmetro, não procura jogo, não acompanha grade e não executa operação.</p>
-          <p class="p"><strong>A tecnologia faz a operação inteira por você.</strong> Do primeiro filtro até o resultado registrado no seu histórico.</p>
-        </div>
-        <div class="bloco">
-          <h3>Para quem é</h3>
-          <p class="p">Para quem não quer o trabalho. Quem não tem tempo, não tem paciência de acompanhar jogo, ou simplesmente prefere não decidir operação por operação.</p>
-        </div>
-        <div class="alerta">
-          <b>A proteção é toda por conta da ORIS.</b> A tecnologia faz a operação inteira e, se o resultado vier contra, o valor volta para você — sem você acionar nada, sem você acompanhar nada. O que a ORIS não faz é prometer quanto você vai ganhar: o resultado de uma partida não está sob o controle de ninguém.
-        </div>
-      </div>
-    </section>
-
-    <!-- 06 · PERFIS -->
-    <section class="container">
-      <div class="eyebrow rv">Identificação</div>
-      <h2 class="rv">Não existe a melhor opção. Existe a sua.</h2>
-
-      <div class="perfis">
-        <div class="perfil rv">
-          <div class="t">Você é do tipo que quer olhar</div>
-          <div class="d">Quer ver a operação antes de entrar. Quer entender por que ela passou no filtro. Quer decidir com a informação na mão.</div>
-          <div class="seta">→ Proteção</div>
-        </div>
-        <div class="perfil rv">
-          <div class="t">Você é do tipo que não quer olhar</div>
-          <div class="d">Não quer procurar jogo, não quer acompanhar grade e não quer configurar nada. Quer que aconteça sem você.</div>
-          <div class="seta">→ Automação</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 07 · O FILTRO -->
-    <section class="container">
-      <div class="eyebrow rv">O mecanismo</div>
-      <h2 class="rv">Antes de chegar até você, a operação é reprovada até provar o contrário.</h2>
-
-      <div class="funil" id="funil">
-        <div class="etapa"><span class="n">01</span><span class="txt">Grade do dia</span><span class="bar" style="width:100%"></span></div>
-        <div class="etapa"><span class="n">02</span><span class="txt">Análise</span><span class="bar" style="width:74%"></span></div>
-        <div class="etapa"><span class="n">03</span><span class="txt">Critérios</span><span class="bar" style="width:52%"></span></div>
-        <div class="etapa"><span class="n">04</span><span class="txt">Filtro</span><span class="bar" style="width:30%"></span></div>
-        <div class="etapa"><span class="n">05</span><span class="txt">Elegíveis</span><span class="bar" style="width:14%"></span></div>
-        <div class="etapa"><span class="n">06</span><span class="txt">Você</span><span class="bar" style="width:8%"></span></div>
-      </div>
-
-      <div class="frases">
-        <div class="frase-forte rv">Um sistema que aprova tudo não está filtrando nada.</div>
-        <div class="frase-forte rv">Na ORIS, dizer não para uma operação também faz parte da tecnologia.</div>
-      </div>
-    </section>
-
-    <!-- 08 · O CUSTO -->
-    <section class="container">
-      <div class="eyebrow rv">O que isso te custa</div>
-      <h2 class="rv">Nem todo jogo chega até você. E é esse o ponto.</h2>
-      <p class="p rv">A maior parte da grade de um dia comum é reprovada antes de aparecer na sua tela. Não por falta de jogo — por falta de critério atendido naquele jogo.</p>
-      <p class="p rv"><strong>Isso tem um custo real para você:</strong> vai ver menos operações do que veria em qualquer grupo por aí.</p>
-      <p class="p rv">E tem um motivo. Estrutura só funciona sobre o que passou por um filtro. Oferecer estrutura em cima de tudo seria oferecer o que não se sustenta.</p>
-    </section>
-
-    <!-- 09 · COMPARAÇÃO -->
-    <section class="container">
-      <div class="eyebrow rv">Lado a lado</div>
-      <h2 class="rv">Mesma tecnologia. Trabalho diferente.</h2>
-
-      <div class="tab rv">
-        <div class="linha-t cab"><span></span><b>Proteção</b><b>Automação</b></div>
-        <div class="linha-t"><span class="k">Quem decide entrar</span><span class="r pro">Você</span><span class="r aut">A tecnologia</span></div>
-        <div class="linha-t"><span class="k">Quem executa</span><span class="r pro">Você</span><span class="r aut">A tecnologia</span></div>
-        <div class="linha-t"><span class="k">O que você configura</span><span class="r pro">Nada — só decide entrar</span><span class="r aut">Nada</span></div>
-        <div class="linha-t"><span class="k">Seu tempo por dia</span><span class="r pro">O de olhar e decidir</span><span class="r aut">Nenhum</span></div>
-        <div class="linha-t"><span class="k">Análise e filtro ORIS</span><span class="r pro">Sim</span><span class="r aut">Sim</span></div>
-        <div class="linha-t igual"><span class="k">Proteção no RED</span><span class="r pro" id="tab-pro"></span><span class="r aut" id="tab-aut"></span></div>
-        <div class="linha-t"><span class="k">Prazo do reembolso</span><span class="r pro">Até 24h</span><span class="r aut">Até 24h</span></div>
-      </div>
-      <div class="nota-tab rv">A linha da proteção é igual nas duas colunas de propósito.</div>
-    </section>
-
-    <!-- ESTEIRA -->
-    <div class="esteira" id="esteira">
-      <div class="container esteira-topo">
-        <h2 class="rv">O que dizem quem usa a plataforma</h2>
-        <p class="nt rv">Depoimentos enviados por usuários da ORIS</p>
-      </div>
-      <div class="pista">
-        <div class="trilho a" id="trilho-a"></div>
-        <div class="trilho b" id="trilho-b"></div>
-      </div>
-    </div>
-
-    <!-- 10 · PERGUNTAS -->
-    <section class="container">
-      <div class="eyebrow rv">Perguntas diretas</div>
-      <h2 class="rv">O que costuma ficar na cabeça de quem chega agora</h2>
-
-      <div class="faq rv">
-        <div class="item">
-          <button class="q" type="button" aria-expanded="false">Se a operação der RED, eu recebo o valor de volta?<span class="sign"></span></button>
-          <div class="a"><div class="a-in">
-            <p class="p"><strong>Sim.</strong> A proteção vale para todas as operações enviadas pela ORIS, sem limite de valor.</p>
-            <p class="p">Você escolhe como quer receber: o valor cai direto na sua conta bancária, ou é convertido em mais proteção dentro da plataforma. O prazo é de até 24h após a resolução do jogo.</p>
-          </div></div>
-        </div>
-
-        <div class="item">
-          <button class="q" type="button" aria-expanded="false">Então a ORIS está me garantindo lucro?<span class="sign"></span></button>
-          <div class="a"><div class="a-in">
-            <p class="p"><strong>Não. São coisas diferentes.</strong> A proteção devolve o valor da operação que deu RED. Devolver não é ganhar.</p>
-            <p class="p">A ORIS não controla o resultado de uma partida e não promete green. O que ela faz é filtrar o que chega até você e devolver o valor quando o resultado vem contra.</p>
-          </div></div>
-        </div>
-
-        <div class="item">
-          <button class="q" type="button" aria-expanded="false">Se vocês devolvem o valor de todo RED, de onde sai esse dinheiro?<span class="sign"></span></button>
-          <div class="a"><div class="a-in">
-            <p class="p" id="resp-quem-paga"></p>
-          </div></div>
-        </div>
-
-        <div class="item">
-          <button class="q" type="button" aria-expanded="false">A ORIS opera no meu lugar?<span class="sign"></span></button>
-          <div class="a"><div class="a-in">
-            <p class="p">Depende da modalidade que você escolher.</p>
-            <p class="p">Na <strong>Proteção</strong>, não: a operação chega analisada e você decide se entra. Na <strong>Automação</strong>, sim: a tecnologia faz a operação inteira, sem você configurar nada.</p>
-          </div></div>
-        </div>
-
-        <div class="item">
-          <button class="q" type="button" aria-expanded="false">Preciso entender de futebol para usar?<span class="sign"></span></button>
-          <div class="a"><div class="a-in">
-            <p class="p">Não. Toda a análise é feita pelo sistema antes de qualquer coisa chegar até você.</p>
-            <p class="p">Na Proteção, a sua única decisão é entrar ou não. Na Automação, nem isso.</p>
-          </div></div>
-        </div>
-
-        <div class="item">
-          <button class="q" type="button" aria-expanded="false">Por que nem todo jogo aparece para mim?<span class="sign"></span></button>
-          <div class="a"><div class="a-in">
-            <p class="p">Porque a maior parte da grade é reprovada antes. Não por falta de jogo — por falta de critério atendido naquele jogo.</p>
-            <p class="p">Um sistema que aprova tudo não está filtrando nada. Dizer não para uma operação também faz parte da tecnologia.</p>
-          </div></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 11 · FECHO -->
-    <div class="fecho container">
-      <div class="painel rv">
-        <div class="eyebrow">A decisão</div>
-        <h2>Agora você já sabe <em>como funciona.</em></h2>
-        <p class="sub">A única coisa que falta é qual das duas é a sua. E essa você escolhe lá dentro.</p>
-        <div class="acoes">
-          <a class="btn" id="cta-2" target="_blank" rel="nofollow sponsored noopener">Criar minha conta na ORIS <span class="ar">&#8594;</span></a>
-          <span class="micro">Cadastro gratuito · leva 2 minutos</span>
-        </div>
-        <div class="assinatura">Você escolhe como operar.<span>A tecnologia faz o resto.</span></div>
-        <p class="nota">Sem contagem regressiva. Sem vaga limitada.</p>
-      </div>
-    </div>
-
-  </main>
-
-  <footer>
-    <div class="container">
-      <p class="miudo" id="aviso-publicidade"></p>
-      <p class="miudo">A proteção se aplica somente às operações identificadas como elegíveis na plataforma, conforme limites e condições vigentes. Não há garantia de lucro. Operações esportivas envolvem risco de perda financeira.</p>
-      <p class="miudo">Conteúdo destinado a maiores de 18 anos.</p>
-      <p class="miudo">orisclub.com</p>
-    </div>
-  </footer>
-
+<header class="topo">
+<div class="container topo-in"><img class="logo" id="logo" alt="ORIS Club"/><div class="idiomas" id="idiomas" role="group" aria-label="Idioma"><a data-lang="pt" href="?lang=pt">PT</a><a data-lang="es" href="?lang=es">ES</a><a data-lang="en" href="?lang=en">EN</a></div></div>
+</header>
+<main>
+<!-- 01 · DOBRA -->
+<div class="hero container">
+<div class="rv in carga" style="animation-delay:60ms"><span class="pill" data-i18n="t001"><span class="dot"></span>Duas formas de operar · Uma tecnologia</span></div>
+<h1 class="rv in carga" data-i18n="t002" style="animation-delay:180ms">A pergunta nunca foi como <em>acertar mais.</em></h1>
+<p class="apoio rv in carga" data-i18n="t003" style="animation-delay:300ms">É como operar melhor. E agora isso tem duas formas.</p>
+<p class="lead rv in carga" data-i18n="t004" style="animation-delay:400ms">Assista à apresentação. No final você vai saber qual das duas modalidades é a sua.</p>
+<div class="palco rv in carga" id="palco" style="animation-delay:500ms">
+<div class="frame">
+<div class="frame-bar">
+<span class="l" data-i18n="t005"><span class="dot"></span>Apresentação</span>
+<span data-i18n="t006">ORIS Club</span>
 </div>
-
+<div class="video"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen="" id="vsl" title="Como a ORIS funciona"></iframe></div>
+</div>
+<div class="som" data-i18n="t007"><span class="ic">▶</span>Assista com o som ligado</div>
+</div>
+<div class="acoes rv">
+<a class="btn" data-i18n="t008" id="cta-1" rel="nofollow sponsored noopener" target="_blank">Criar minha conta na ORIS <span class="ar">→</span></a>
+<span class="micro" data-i18n="t009">Cadastro gratuito · você escolhe a modalidade dentro da plataforma</span>
+</div>
+</div>
+<!-- 02 · A SEMANA -->
+<section class="container">
+<div class="eyebrow rv" data-i18n="t010">A semana</div>
+<h2 class="rv" data-i18n="t011">Você não perdeu um jogo. Perdeu a semana.</h2>
+<p class="p rv" data-i18n="t012">Segunda deu certo. Quarta deu certo. Sexta deu certo. Você fez tudo do jeito que tinha que ser feito.</p>
+<p class="p rv" data-i18n="t013">Aí veio domingo. <strong>Noventa minutos.</strong></p>
+<div class="semana rv" id="semana">
+<div class="sem-body">
+<div class="barra-dia g" data-larg="32"><div class="top"><span class="d" data-i18n="t014">Segunda</span><span class="u" data-i18n="t015">+ R$ 180</span></div><div class="trilha"><div class="preenche"></div></div></div>
+<div class="barra-dia g" data-larg="42"><div class="top"><span class="d" data-i18n="t016">Quarta</span><span class="u" data-i18n="t017">+ R$ 240</span></div><div class="trilha"><div class="preenche"></div></div></div>
+<div class="barra-dia g" data-larg="26"><div class="top"><span class="d" data-i18n="t018">Sexta</span><span class="u" data-i18n="t019">+ R$ 150</span></div><div class="trilha"><div class="preenche"></div></div></div>
+<div class="barra-dia r" data-larg="100" id="dia-red"><div class="top"><span class="d" data-i18n="t020">Domingo</span><span class="u" data-i18n="t021" id="valor-red">− R$ 570</span></div><div class="trilha"><div class="preenche"></div></div></div>
+</div>
+<div class="selo-prot" data-i18n="t022" id="selo-prot"><span class="dot"></span>Proteção aplicada · valor reembolsado</div>
+<div class="sem-pe"><span data-i18n="t023">Exemplo ilustrativo</span><span class="res" data-i18n="t024" id="res-semana">Semana zerada</span></div>
+</div>
+<p class="p rv" data-i18n="t025">E na segunda de manhã você está exatamente no mesmo lugar de onde saiu sete dias antes.</p>
+<p class="p rv" data-i18n="t026">Foi olhando para esse domingo que a ORIS foi construída.</p>
+<div class="gancho rv" data-i18n="t027">Porque quase todo mundo tenta resolver isso do mesmo jeito.</div>
+</section>
+<!-- 03 · A VIRADA -->
+<section class="container">
+<div class="eyebrow rv" data-i18n="t028">A virada</div>
+<h2 class="rv" data-i18n="t029">Todo mundo tenta acertar mais. A ORIS foi pelo outro lado.</h2>
+<p class="p rv" data-i18n="t030">Acertar mais é o caminho óbvio. É também o caminho que ninguém controla, porque ninguém controla o resultado de uma partida.</p>
+<p class="p rv" data-i18n="t031">A pergunta que a ORIS fez foi outra: <strong>se o erro vai acontecer de qualquer forma, o que dá para fazer com o impacto dele — e com o trabalho que ele te custa?</strong></p>
+<p class="p rv" data-i18n="t032">Mudar a pergunta muda o produto inteiro.</p>
+<div class="manifesto rv">
+<div class="m" data-i18n="t033">Não prometemos que o jogo vai dar green.</div>
+<div class="m" data-i18n="t034">Mudamos a forma como você participa dele.</div>
+</div>
+</section>
+<!-- 04 · A EMPRESA -->
+<section class="container">
+<div class="eyebrow rv" data-i18n="t035">A empresa</div>
+<h2 class="rv" data-i18n="t036">Uma empresa de tecnologia que opera no mercado esportivo. Não o contrário.</h2>
+<div class="quatro rv">
+<div data-i18n="t037">NÃO SOMOS TIPSTER.</div>
+<div data-i18n="t038">NÃO SOMOS CURSO.</div>
+<div data-i18n="t039">NÃO PROMETEMOS GREEN.</div>
+<div data-i18n="t040">SOMOS TECNOLOGIA.</div>
+</div>
+<p class="p rv" data-i18n="t041">O que a ORIS constrói é infraestrutura: análise, critério, filtro e execução.</p>
+</section>
+<!-- 05 · SELETOR -->
+<section class="container">
+<div class="eyebrow rv" data-i18n="t042">A escolha</div>
+<h2 class="rv" data-i18n="t043">Você escolhe o quanto quer estar no <em>controle.</em></h2>
+<p class="p rv" data-i18n="t044">A ORIS não obriga ninguém a operar de uma única maneira. A tecnologia é a mesma. O que muda é quem aperta o botão.</p>
+<div class="seletor rv" role="tablist">
+<button aria-selected="true" class="cartao" data-mod="protecao" role="tab">
+<span class="tag" data-i18n="t045">Modalidade 01</span>
+<div class="nome" data-i18n="t046">Proteção</div>
+<div class="res" data-i18n="t047">Você opera. A ORIS envia a operação analisada, você decide se entra — e se der RED, o valor volta para você.</div>
+<span class="abrir" data-i18n="t048">Ver como funciona →</span>
+</button>
+<button aria-selected="false" class="cartao" data-mod="automacao" role="tab">
+<span class="tag" data-i18n="t049">Modalidade 02</span>
+<div class="nome" data-i18n="t050">Automação</div>
+<div class="res" data-i18n="t051">Você não opera. A tecnologia executa tudo por você, do começo ao fim, sem você configurar nada.</div>
+<span class="abrir" data-i18n="t052">Ver como funciona →</span>
+</button>
+</div>
+<div class="painel-mod on" id="mod-protecao">
+<div class="bloco">
+<h3 data-i18n="t053">Como funciona</h3>
+<p class="p" data-i18n="t054">A grade do dia inteira passa pelo sistema. O que não atende ao critério é reprovado antes de chegar na sua tela. O que passa, chega até você com a análise pronta — e você decide se entra.</p>
+<p class="p" data-i18n="t055"><strong>Se a operação der RED, o valor é reembolsado.</strong> A proteção vale para todas as operações enviadas pela ORIS.</p>
+</div>
+<div class="bloco">
+<h3 data-i18n="t056">Para quem é</h3>
+<p class="p" data-i18n="t057">Para quem gosta de olhar a operação antes de entrar. Quem quer decidir. Quem não abre mão do controle.</p>
+</div>
+<div class="condicoes">
+<div class="cond-t" data-i18n="t058">Condições da proteção</div>
+<dl class="cond-grid">
+<div class="cond"><dt data-i18n="t059">Quais operações</dt><dd id="cond-quais"></dd></div>
+<div class="cond"><dt data-i18n="t060">Limite</dt><dd id="cond-limite"></dd></div>
+<div class="cond"><dt data-i18n="t061">Forma</dt><dd id="cond-forma"></dd></div>
+<div class="cond"><dt data-i18n="t062">Prazo</dt><dd id="cond-prazo"></dd></div>
+</dl>
+</div>
+</div>
+<div class="painel-mod" id="mod-automacao">
+<div class="bloco">
+<h3 data-i18n="t063">Como funciona</h3>
+<p class="p" data-i18n="t064">Aqui você não configura nada. Não escolhe estratégia, não define parâmetro, não procura jogo, não acompanha grade e não executa operação.</p>
+<p class="p" data-i18n="t065"><strong>A tecnologia faz a operação inteira por você.</strong> Do primeiro filtro até o resultado registrado no seu histórico.</p>
+</div>
+<div class="bloco">
+<h3 data-i18n="t066">Para quem é</h3>
+<p class="p" data-i18n="t067">Para quem não quer o trabalho. Quem não tem tempo, não tem paciência de acompanhar jogo, ou simplesmente prefere não decidir operação por operação.</p>
+</div>
+<div class="alerta" data-i18n="t068">
+<b>A proteção é toda por conta da ORIS.</b> A tecnologia faz a operação inteira e, se o resultado vier contra, o valor volta para você — sem você acionar nada, sem você acompanhar nada. O que a ORIS não faz é prometer quanto você vai ganhar: o resultado de uma partida não está sob o controle de ninguém.
+        </div>
+</div>
+</section>
+<!-- 06 · PERFIS -->
+<section class="container">
+<div class="eyebrow rv" data-i18n="t069">Identificação</div>
+<h2 class="rv" data-i18n="t070">Não existe a melhor opção. Existe a sua.</h2>
+<div class="perfis">
+<div class="perfil rv">
+<div class="t" data-i18n="t071">Você é do tipo que quer olhar</div>
+<div class="d" data-i18n="t072">Quer ver a operação antes de entrar. Quer entender por que ela passou no filtro. Quer decidir com a informação na mão.</div>
+<div class="seta" data-i18n="t073">→ Proteção</div>
+</div>
+<div class="perfil rv">
+<div class="t" data-i18n="t074">Você é do tipo que não quer olhar</div>
+<div class="d" data-i18n="t075">Não quer procurar jogo, não quer acompanhar grade e não quer configurar nada. Quer que aconteça sem você.</div>
+<div class="seta" data-i18n="t076">→ Automação</div>
+</div>
+</div>
+</section>
+<!-- 07 · O FILTRO -->
+<section class="container">
+<div class="eyebrow rv" data-i18n="t077">O mecanismo</div>
+<h2 class="rv" data-i18n="t078">Antes de chegar até você, a operação é reprovada até provar o contrário.</h2>
+<div class="funil" id="funil">
+<div class="etapa"><span class="n">01</span><span class="txt" data-i18n="t079">Grade do dia</span><span class="bar" style="width:100%"></span></div>
+<div class="etapa"><span class="n">02</span><span class="txt" data-i18n="t080">Análise</span><span class="bar" style="width:74%"></span></div>
+<div class="etapa"><span class="n">03</span><span class="txt" data-i18n="t081">Critérios</span><span class="bar" style="width:52%"></span></div>
+<div class="etapa"><span class="n">04</span><span class="txt" data-i18n="t082">Filtro</span><span class="bar" style="width:30%"></span></div>
+<div class="etapa"><span class="n">05</span><span class="txt" data-i18n="t083">Elegíveis</span><span class="bar" style="width:14%"></span></div>
+<div class="etapa"><span class="n">06</span><span class="txt" data-i18n="t084">Você</span><span class="bar" style="width:8%"></span></div>
+</div>
+<div class="frases">
+<div class="frase-forte rv" data-i18n="t085">Um sistema que aprova tudo não está filtrando nada.</div>
+<div class="frase-forte rv" data-i18n="t086">Na ORIS, dizer não para uma operação também faz parte da tecnologia.</div>
+</div>
+</section>
+<!-- 08 · O CUSTO -->
+<section class="container">
+<div class="eyebrow rv" data-i18n="t087">O que isso te custa</div>
+<h2 class="rv" data-i18n="t088">Nem todo jogo chega até você. E é esse o ponto.</h2>
+<p class="p rv" data-i18n="t089">A maior parte da grade de um dia comum é reprovada antes de aparecer na sua tela. Não por falta de jogo — por falta de critério atendido naquele jogo.</p>
+<p class="p rv" data-i18n="t090"><strong>Isso tem um custo real para você:</strong> vai ver menos operações do que veria em qualquer grupo por aí.</p>
+<p class="p rv" data-i18n="t091">E tem um motivo. Estrutura só funciona sobre o que passou por um filtro. Oferecer estrutura em cima de tudo seria oferecer o que não se sustenta.</p>
+</section>
+<!-- 09 · COMPARAÇÃO -->
+<section class="container">
+<div class="eyebrow rv" data-i18n="t092">Lado a lado</div>
+<h2 class="rv" data-i18n="t093">Mesma tecnologia. Trabalho diferente.</h2>
+<div class="tab rv">
+<div class="linha-t cab"><span></span><b data-i18n="t094">Proteção</b><b data-i18n="t095">Automação</b></div>
+<div class="linha-t"><span class="k" data-i18n="t096">Quem decide entrar</span><span class="r pro" data-i18n="t097">Você</span><span class="r aut" data-i18n="t098">A tecnologia</span></div>
+<div class="linha-t"><span class="k" data-i18n="t099">Quem executa</span><span class="r pro" data-i18n="t100">Você</span><span class="r aut" data-i18n="t101">A tecnologia</span></div>
+<div class="linha-t"><span class="k" data-i18n="t102">O que você configura</span><span class="r pro" data-i18n="t103">Nada — só decide entrar</span><span class="r aut" data-i18n="t104">Nada</span></div>
+<div class="linha-t"><span class="k" data-i18n="t105">Seu tempo por dia</span><span class="r pro" data-i18n="t106">O de olhar e decidir</span><span class="r aut" data-i18n="t107">Nenhum</span></div>
+<div class="linha-t"><span class="k" data-i18n="t108">Análise e filtro ORIS</span><span class="r pro" data-i18n="t109">Sim</span><span class="r aut" data-i18n="t110">Sim</span></div>
+<div class="linha-t igual"><span class="k" data-i18n="t111">Proteção no RED</span><span class="r pro" id="tab-pro"></span><span class="r aut" id="tab-aut"></span></div>
+<div class="linha-t"><span class="k" data-i18n="t112">Prazo do reembolso</span><span class="r pro" data-i18n="t113">Até 24h</span><span class="r aut" data-i18n="t114">Até 24h</span></div>
+</div>
+<div class="nota-tab rv" data-i18n="t115">A linha da proteção é igual nas duas colunas de propósito.</div>
+</section>
+<!-- ESTEIRA -->
+<div class="esteira" id="esteira">
+<div class="container esteira-topo">
+<h2 class="rv" data-i18n="t116">O que dizem quem usa a plataforma</h2>
+<p class="nt rv" data-i18n="t117">Depoimentos enviados por usuários da ORIS</p>
+</div>
+<div class="pista">
+<div class="trilho a" id="trilho-a"></div>
+<div class="trilho b" id="trilho-b"></div>
+</div>
+</div>
+<!-- 10 · PERGUNTAS -->
+<section class="container">
+<div class="eyebrow rv" data-i18n="t118">Perguntas diretas</div>
+<h2 class="rv" data-i18n="t119">O que costuma ficar na cabeça de quem chega agora</h2>
+<div class="faq rv">
+<div class="item">
+<button aria-expanded="false" class="q" data-i18n="t120" type="button">Se a operação der RED, eu recebo o valor de volta?<span class="sign"></span></button>
+<div class="a"><div class="a-in">
+<p class="p" data-i18n="t121"><strong>Sim.</strong> A proteção vale para todas as operações enviadas pela ORIS, sem limite de valor.</p>
+<p class="p" data-i18n="t122">Você escolhe como quer receber: o valor cai direto na sua conta bancária, ou é convertido em mais proteção dentro da plataforma. O prazo é de até 24h após a resolução do jogo.</p>
+</div></div>
+</div>
+<div class="item">
+<button aria-expanded="false" class="q" data-i18n="t123" type="button">Então a ORIS está me garantindo lucro?<span class="sign"></span></button>
+<div class="a"><div class="a-in">
+<p class="p" data-i18n="t124"><strong>Não. São coisas diferentes.</strong> A proteção devolve o valor da operação que deu RED. Devolver não é ganhar.</p>
+<p class="p" data-i18n="t125">A ORIS não controla o resultado de uma partida e não promete green. O que ela faz é filtrar o que chega até você e devolver o valor quando o resultado vem contra.</p>
+</div></div>
+</div>
+<div class="item">
+<button aria-expanded="false" class="q" data-i18n="t126" type="button">Se vocês devolvem o valor de todo RED, de onde sai esse dinheiro?<span class="sign"></span></button>
+<div class="a"><div class="a-in">
+<p class="p" id="resp-quem-paga"></p>
+</div></div>
+</div>
+<div class="item">
+<button aria-expanded="false" class="q" data-i18n="t127" type="button">A ORIS opera no meu lugar?<span class="sign"></span></button>
+<div class="a"><div class="a-in">
+<p class="p" data-i18n="t128">Depende da modalidade que você escolher.</p>
+<p class="p" data-i18n="t129">Na <strong>Proteção</strong>, não: a operação chega analisada e você decide se entra. Na <strong>Automação</strong>, sim: a tecnologia faz a operação inteira, sem você configurar nada.</p>
+</div></div>
+</div>
+<div class="item">
+<button aria-expanded="false" class="q" data-i18n="t130" type="button">Preciso entender de futebol para usar?<span class="sign"></span></button>
+<div class="a"><div class="a-in">
+<p class="p" data-i18n="t131">Não. Toda a análise é feita pelo sistema antes de qualquer coisa chegar até você.</p>
+<p class="p" data-i18n="t132">Na Proteção, a sua única decisão é entrar ou não. Na Automação, nem isso.</p>
+</div></div>
+</div>
+<div class="item">
+<button aria-expanded="false" class="q" data-i18n="t133" type="button">Por que nem todo jogo aparece para mim?<span class="sign"></span></button>
+<div class="a"><div class="a-in">
+<p class="p" data-i18n="t134">Porque a maior parte da grade é reprovada antes. Não por falta de jogo — por falta de critério atendido naquele jogo.</p>
+<p class="p" data-i18n="t135">Um sistema que aprova tudo não está filtrando nada. Dizer não para uma operação também faz parte da tecnologia.</p>
+</div></div>
+</div>
+</div>
+</section>
+<!-- 11 · FECHO -->
+<div class="fecho container">
+<div class="painel rv">
+<div class="eyebrow" data-i18n="t136">A decisão</div>
+<h2 data-i18n="t137">Agora você já sabe <em>como funciona.</em></h2>
+<p class="sub" data-i18n="t138">A única coisa que falta é qual das duas é a sua. E essa você escolhe lá dentro.</p>
+<div class="acoes">
+<a class="btn" data-i18n="t139" id="cta-2" rel="nofollow sponsored noopener" target="_blank">Criar minha conta na ORIS <span class="ar">→</span></a>
+<span class="micro" data-i18n="t140">Cadastro gratuito · leva 2 minutos</span>
+</div>
+<div class="assinatura" data-i18n="t141">Você escolhe como operar.<span>A tecnologia faz o resto.</span></div>
+<p class="nota" data-i18n="t142">Sem contagem regressiva. Sem vaga limitada.</p>
+</div>
+</div>
+</main>
+<footer>
+<div class="container">
+<p class="miudo" id="aviso-publicidade"></p>
+<p class="miudo" data-i18n="t143">A proteção se aplica somente às operações identificadas como elegíveis na plataforma, conforme limites e condições vigentes. Não há garantia de lucro. Operações esportivas envolvem risco de perda financeira.</p>
+<p class="miudo" data-i18n="t144">Conteúdo destinado a maiores de 18 anos.</p>
+<p class="miudo" data-i18n="t145">orisclub.com</p>
+</div>
+</footer>
+</div>
 <div class="barra" id="barra">
-  <a id="cta-barra" target="_blank" rel="nofollow sponsored noopener">Criar minha conta <span>&#8594;</span></a>
+<a data-i18n="t146" id="cta-barra" rel="nofollow sponsored noopener" target="_blank">Criar minha conta <span>→</span></a>
 </div>
-
 <script>
 /* ============================================================
    CONFIG
@@ -623,6 +597,9 @@ var CONFIG = {
   // Cada afiliado divulga a página com o código dele, de dois jeitos:
   //   vsl.orisclub.club/01KVERS1A3
   //   vsl.orisclub.club/?ref=01KVERS1A3
+  //
+  // O idioma NÃO entra no caminho da URL — ele vem em ?lang=
+  //   vsl.orisclub.club/01KVERS1A3?lang=es
   // ===============================================================
   BASE_CADASTRO: "https://app.orisclub.com/register?ref={REF}",
 
@@ -633,31 +610,537 @@ var CONFIG = {
   // "apelido": { nome: "Fulano S.", link: "https://link-completo-dele" }
   AFILIADOS: {},
 
+  // Idioma de quem não é pt/es/en e não passou ?lang=.
+  IDIOMA_PADRAO: "en",
+
   // URL do YouTube em qualquer formato (youtu.be / watch?v= / embed).
-  VIDEO: "",
+  // UM VÍDEO POR IDIOMA. Se o idioma estiver vazio, cai no português.
+  VIDEO: {
+    pt: "",
+    es: "",
+    en: ""
+  },
 
   // Condições da proteção — enquanto vazias, a página mostra "— a definir —".
   condicoes: {
-    quais:  "Todas as operações enviadas pela ORIS",
-    limite: "Sem limite de valor",
-    forma:  "Direto na sua conta bancária, ou convertido em mais proteção na plataforma",
-    prazo:  "Até 24h após a resolução do jogo"
+    pt: {
+      quais:  "Todas as operações enviadas pela ORIS",
+      limite: "Sem limite de valor",
+      forma:  "Direto na sua conta bancária, ou convertido em mais proteção na plataforma",
+      prazo:  "Até 24h após a resolução do jogo"
+    },
+    es: {
+      quais:  "Todas las operaciones enviadas por ORIS",
+      limite: "Sin límite de importe",
+      forma:  "Directo a tu cuenta bancaria, o convertido en más protección en la plataforma",
+      prazo:  "Hasta 24h después de la resolución del partido"
+    },
+    en: {
+      quais:  "Every operation sent by ORIS",
+      limite: "No cap on the amount",
+      forma:  "Straight to your bank account, or converted into more protection on the platform",
+      prazo:  "Up to 24h after the match is settled"
+    }
   },
 
   // Linha "Proteção no RED" da tabela comparativa.
   tabela: {
-    protecao:  "Todas as operações enviadas",
-    automacao: "Todas as operações enviadas"
+    pt: { protecao: "Todas as operações enviadas", automacao: "Todas as operações enviadas" },
+    es: { protecao: "Todas las operaciones enviadas", automacao: "Todas las operaciones enviadas" },
+    en: { protecao: "Every operation sent", automacao: "Every operation sent" }
   },
 
   // RESPOSTA REAL de "de onde sai o dinheiro do reembolso".
   // Enquanto vazia, a pergunta inteira some da página — de propósito:
   // é melhor não fazer a pergunta do que fazer e não responder.
-  respostaQuemPaga: "",
+  respostaQuemPaga: {
+    pt: "",
+    es: "",
+    en: ""
+  },
 
   // Depoimentos: SOMENTE reais e com autorização de uso.
   // Array vazio = a seção some sozinha da página.
-  depoimentos: []
+  // Depoimento é por idioma — depoimento traduzido não é depoimento real.
+  depoimentos: {
+    pt: [],
+    es: [],
+    en: []
+  }
+};
+
+/* ============================================================
+   COPY — pt · es · en
+   Só texto. Nada de estrutura, nada de link.
+   As tags <strong> <em> <b> <span> fazem parte do texto: mantenha.
+   ============================================================ */
+
+var I18N = {
+ "en": {
+  "js_a_definir": "— to be defined —",
+  "js_pub_com": "Advertising. Promotional page published by {nome}, a paid partner of ORIS Club.",
+  "js_pub_sem": "Advertising. Promotional page published by a paid partner of ORIS Club.",
+  "js_red_zerado": "<s>&minus;$570</s>$0",
+  "js_semana_ok": "Week preserved",
+  "js_usuario": "Platform user",
+  "t001": "<span class=\"dot\"></span>Two ways to operate · One technology",
+  "t002": "The question was never how to <em>win more.</em>",
+  "t003": "It's how to operate better. And now that comes in two forms.",
+  "t004": "Watch the presentation. By the end you'll know which of the two is yours.",
+  "t005": "<span class=\"dot\"></span>Presentation",
+  "t006": "ORIS Club",
+  "t007": "<span class=\"ic\">▶</span>Watch with the sound on",
+  "t008": "Create my ORIS account <span class=\"ar\">→</span>",
+  "t009": "Free sign-up · you choose your mode inside the platform",
+  "t010": "The week",
+  "t011": "You didn't lose a match. You lost the week.",
+  "t012": "Monday worked. Wednesday worked. Friday worked. You did everything exactly the way it was supposed to be done.",
+  "t013": "Then Sunday came. <strong>Ninety minutes.</strong>",
+  "t014": "Monday",
+  "t015": "+$180",
+  "t016": "Wednesday",
+  "t017": "+$240",
+  "t018": "Friday",
+  "t019": "+$150",
+  "t020": "Sunday",
+  "t021": "−$570",
+  "t022": "<span class=\"dot\"></span>Protection applied · amount refunded",
+  "t023": "Illustrative example",
+  "t024": "Week erased",
+  "t025": "And on Monday morning you're standing exactly where you started seven days earlier.",
+  "t026": "ORIS was built looking at that Sunday.",
+  "t027": "Because almost everyone tries to solve this the same way.",
+  "t028": "The turn",
+  "t029": "Everyone tries to win more. ORIS went the other way.",
+  "t030": "Winning more is the obvious path. It's also the path nobody controls, because nobody controls the outcome of a match.",
+  "t031": "ORIS asked a different question: <strong>if the loss is going to happen anyway, what can be done about its impact — and about the work it costs you?</strong>",
+  "t032": "Changing the question changes the entire product.",
+  "t033": "We don't promise the match will go your way.",
+  "t034": "We change how you take part in it.",
+  "t035": "The company",
+  "t036": "A technology company operating in the sports market. Not the other way around.",
+  "t037": "WE ARE NOT TIPSTERS.",
+  "t038": "WE ARE NOT A COURSE.",
+  "t039": "WE DON'T PROMISE WINS.",
+  "t040": "WE ARE TECHNOLOGY.",
+  "t041": "What ORIS builds is infrastructure: analysis, criteria, filtering and execution.",
+  "t042": "The choice",
+  "t043": "You choose how much you want to be in <em>control.</em>",
+  "t044": "ORIS doesn't force anyone into a single way of operating. The technology is the same. What changes is who presses the button.",
+  "t045": "Mode 01",
+  "t046": "Protection",
+  "t047": "You operate. ORIS sends the analyzed operation, you decide whether to take it — and if the result goes against you, the amount comes back to you.",
+  "t048": "See how it works →",
+  "t049": "Mode 02",
+  "t050": "Automation",
+  "t051": "You don't operate. The technology executes everything for you, start to finish, with nothing for you to configure.",
+  "t052": "See how it works →",
+  "t053": "How it works",
+  "t054": "The entire day's fixture list runs through the system. Anything that fails the criteria is rejected before it reaches your screen. What passes reaches you with the analysis already done — and you decide whether to take it.",
+  "t055": "<strong>If the operation goes against you, the amount is refunded.</strong> Protection applies to every operation sent by ORIS.",
+  "t056": "Who it's for",
+  "t057": "For someone who likes to look at the operation before entering. Who wants to decide. Who won't give up control.",
+  "t058": "Protection terms",
+  "t059": "Which operations",
+  "t060": "Limit",
+  "t061": "Method",
+  "t062": "Timeframe",
+  "t063": "How it works",
+  "t064": "Here you configure nothing. No strategy to pick, no parameters to set, no match to look for, no fixture list to follow and no operation to place.",
+  "t065": "<strong>The technology handles the entire operation for you.</strong> From the first filter to the result recorded in your history.",
+  "t066": "Who it's for",
+  "t067": "For someone who doesn't want the work. No time, no patience for following matches, or who simply prefers not to decide operation by operation.",
+  "t068": "<b>Protection is entirely on ORIS.</b> The technology handles the whole operation and, if the result goes against you, the amount comes back to you — with nothing to trigger and nothing to monitor. What ORIS does not do is promise how much you'll make: nobody controls the outcome of a match.",
+  "t069": "Which one are you",
+  "t070": "There is no best option. There's yours.",
+  "t071": "You're the type who wants to look",
+  "t072": "You want to see the operation before entering. You want to understand why it passed the filter. You want to decide with the information in front of you.",
+  "t073": "→ Protection",
+  "t074": "You're the type who doesn't want to look",
+  "t075": "You don't want to look for matches, follow a fixture list or configure anything. You want it to happen without you.",
+  "t076": "→ Automation",
+  "t077": "The mechanism",
+  "t078": "Before it reaches you, an operation is rejected until it proves otherwise.",
+  "t079": "Day's fixtures",
+  "t080": "Analysis",
+  "t081": "Criteria",
+  "t082": "Filter",
+  "t083": "Eligible",
+  "t084": "You",
+  "t085": "A system that approves everything is filtering nothing.",
+  "t086": "At ORIS, saying no to an operation is part of the technology too.",
+  "t087": "What this costs you",
+  "t088": "Not every match reaches you. And that's exactly the point.",
+  "t089": "Most of an ordinary day's fixture list is rejected before it ever appears on your screen. Not for lack of matches — for lack of criteria met in that match.",
+  "t090": "<strong>This has a real cost for you:</strong> you'll see fewer operations than you would in any group out there.",
+  "t091": "And there's a reason. Structure only works on top of something that passed a filter. Offering structure on everything would mean offering something that doesn't hold up.",
+  "t092": "Side by side",
+  "t093": "Same technology. Different workload.",
+  "t094": "Protection",
+  "t095": "Automation",
+  "t096": "Who decides to enter",
+  "t097": "You",
+  "t098": "The technology",
+  "t099": "Who executes",
+  "t100": "You",
+  "t101": "The technology",
+  "t102": "What you configure",
+  "t103": "Nothing — you only decide to enter",
+  "t104": "Nothing",
+  "t105": "Your time per day",
+  "t106": "Enough to look and decide",
+  "t107": "None",
+  "t108": "ORIS analysis and filtering",
+  "t109": "Yes",
+  "t110": "Yes",
+  "t111": "Protection when it goes against you",
+  "t112": "Refund timeframe",
+  "t113": "Up to 24h",
+  "t114": "Up to 24h",
+  "t115": "The protection row is identical in both columns on purpose.",
+  "t116": "What people using the platform say",
+  "t117": "Testimonials sent in by ORIS users",
+  "t118": "Straight questions",
+  "t119": "What usually stays on the mind of someone arriving now",
+  "t120": "If the operation goes against me, do I get the amount back?<span class=\"sign\"></span>",
+  "t121": "<strong>Yes.</strong> Protection applies to every operation sent by ORIS, with no cap on the amount.",
+  "t122": "You choose how to receive it: the amount goes straight to your bank account, or it's converted into more protection inside the platform. The timeframe is up to 24h after the match is settled.",
+  "t123": "So is ORIS guaranteeing me a profit?<span class=\"sign\"></span>",
+  "t124": "<strong>No. These are different things.</strong> Protection returns the amount of the operation that went against you. Returning is not winning.",
+  "t125": "ORIS doesn't control the outcome of a match and doesn't promise wins. What it does is filter what reaches you and return the amount when the result goes against you.",
+  "t126": "If you refund every losing operation, where does that money come from?<span class=\"sign\"></span>",
+  "t127": "Does ORIS operate on my behalf?<span class=\"sign\"></span>",
+  "t128": "It depends on the mode you choose.",
+  "t129": "In <strong>Protection</strong>, no: the operation arrives analyzed and you decide whether to take it. In <strong>Automation</strong>, yes: the technology handles the whole operation, with nothing for you to configure.",
+  "t130": "Do I need to understand football to use it?<span class=\"sign\"></span>",
+  "t131": "No. All the analysis is done by the system before anything reaches you.",
+  "t132": "In Protection, your only decision is whether to enter. In Automation, not even that.",
+  "t133": "Why doesn't every match show up for me?<span class=\"sign\"></span>",
+  "t134": "Because most of the fixture list is rejected beforehand. Not for lack of matches — for lack of criteria met in that match.",
+  "t135": "A system that approves everything is filtering nothing. Saying no to an operation is part of the technology too.",
+  "t136": "The decision",
+  "t137": "Now you know <em>how it works.</em>",
+  "t138": "The only thing left is which of the two is yours. And that one you choose inside.",
+  "t139": "Create my ORIS account <span class=\"ar\">→</span>",
+  "t140": "Free sign-up · takes 2 minutes",
+  "t141": "You choose how to operate.<span>The technology does the rest.</span>",
+  "t142": "No countdown. No limited spots.",
+  "t143": "Protection applies only to operations identified as eligible on the platform, subject to the limits and terms in force. There is no guarantee of profit. Sports operations carry a risk of financial loss.",
+  "t144": "Content intended for people aged 18 and over.",
+  "t145": "orisclub.com",
+  "t146": "Create my account <span>→</span>",
+  "title": "ORIS Club — Two ways to operate. One technology."
+ },
+ "es": {
+  "js_a_definir": "— por definir —",
+  "js_pub_com": "Publicidad. Página de difusión publicada por {nome}, socio remunerado de ORIS Club.",
+  "js_pub_sem": "Publicidad. Página de difusión publicada por un socio remunerado de ORIS Club.",
+  "js_red_zerado": "<s>&minus; $ 570</s>$ 0",
+  "js_semana_ok": "Semana preservada",
+  "js_usuario": "Usuario de la plataforma",
+  "t001": "<span class=\"dot\"></span>Dos formas de operar · Una tecnología",
+  "t002": "La pregunta nunca fue cómo <em>acertar más.</em>",
+  "t003": "Es cómo operar mejor. Y ahora eso tiene dos formas.",
+  "t004": "Mira la presentación. Al final vas a saber cuál de las dos modalidades es la tuya.",
+  "t005": "<span class=\"dot\"></span>Presentación",
+  "t006": "ORIS Club",
+  "t007": "<span class=\"ic\">▶</span>Míralo con el sonido activado",
+  "t008": "Crear mi cuenta en ORIS <span class=\"ar\">→</span>",
+  "t009": "Registro gratuito · eliges la modalidad dentro de la plataforma",
+  "t010": "La semana",
+  "t011": "No perdiste un partido. Perdiste la semana.",
+  "t012": "El lunes salió bien. El miércoles salió bien. El viernes salió bien. Hiciste todo como tenía que hacerse.",
+  "t013": "Y llegó el domingo. <strong>Noventa minutos.</strong>",
+  "t014": "Lunes",
+  "t015": "+ $ 180",
+  "t016": "Miércoles",
+  "t017": "+ $ 240",
+  "t018": "Viernes",
+  "t019": "+ $ 150",
+  "t020": "Domingo",
+  "t021": "− $ 570",
+  "t022": "<span class=\"dot\"></span>Protección aplicada · importe reembolsado",
+  "t023": "Ejemplo ilustrativo",
+  "t024": "Semana perdida",
+  "t025": "Y el lunes por la mañana estás exactamente en el mismo lugar del que saliste siete días antes.",
+  "t026": "Fue mirando ese domingo que se construyó ORIS.",
+  "t027": "Porque casi todo el mundo intenta resolver esto de la misma forma.",
+  "t028": "El giro",
+  "t029": "Todos intentan acertar más. ORIS fue por el otro lado.",
+  "t030": "Acertar más es el camino obvio. También es el camino que nadie controla, porque nadie controla el resultado de un partido.",
+  "t031": "La pregunta que hizo ORIS fue otra: <strong>si el error va a ocurrir de todos modos, ¿qué se puede hacer con su impacto — y con el trabajo que te cuesta?</strong>",
+  "t032": "Cambiar la pregunta cambia el producto entero.",
+  "t033": "No prometemos que el partido salga a tu favor.",
+  "t034": "Cambiamos la forma en que participas de él.",
+  "t035": "La empresa",
+  "t036": "Una empresa de tecnología que opera en el mercado deportivo. No al revés.",
+  "t037": "NO SOMOS TIPSTERS.",
+  "t038": "NO SOMOS UN CURSO.",
+  "t039": "NO PROMETEMOS GANANCIAS.",
+  "t040": "SOMOS TECNOLOGÍA.",
+  "t041": "Lo que ORIS construye es infraestructura: análisis, criterio, filtro y ejecución.",
+  "t042": "La elección",
+  "t043": "Tú eliges cuánto quieres estar en <em>control.</em>",
+  "t044": "ORIS no obliga a nadie a operar de una sola manera. La tecnología es la misma. Lo que cambia es quién aprieta el botón.",
+  "t045": "Modalidad 01",
+  "t046": "Protección",
+  "t047": "Tú operas. ORIS envía la operación analizada, tú decides si entras — y si el resultado viene en contra, el importe vuelve a ti.",
+  "t048": "Ver cómo funciona →",
+  "t049": "Modalidad 02",
+  "t050": "Automatización",
+  "t051": "Tú no operas. La tecnología ejecuta todo por ti, de principio a fin, sin que configures nada.",
+  "t052": "Ver cómo funciona →",
+  "t053": "Cómo funciona",
+  "t054": "Toda la agenda del día pasa por el sistema. Lo que no cumple el criterio se rechaza antes de llegar a tu pantalla. Lo que pasa llega hasta ti con el análisis hecho — y tú decides si entras.",
+  "t055": "<strong>Si la operación viene en contra, el importe se reembolsa.</strong> La protección vale para todas las operaciones enviadas por ORIS.",
+  "t056": "Para quién es",
+  "t057": "Para quien le gusta mirar la operación antes de entrar. Quien quiere decidir. Quien no renuncia al control.",
+  "t058": "Condiciones de la protección",
+  "t059": "Qué operaciones",
+  "t060": "Límite",
+  "t061": "Forma",
+  "t062": "Plazo",
+  "t063": "Cómo funciona",
+  "t064": "Aquí no configuras nada. No eliges estrategia, no defines parámetros, no buscas partido, no sigues la agenda y no ejecutas ninguna operación.",
+  "t065": "<strong>La tecnología hace la operación entera por ti.</strong> Desde el primer filtro hasta el resultado registrado en tu historial.",
+  "t066": "Para quién es",
+  "t067": "Para quien no quiere el trabajo. Quien no tiene tiempo, no tiene paciencia para seguir partidos, o simplemente prefiere no decidir operación por operación.",
+  "t068": "<b>La protección corre por cuenta de ORIS.</b> La tecnología hace la operación entera y, si el resultado viene en contra, el importe vuelve a ti — sin que actives nada, sin que sigas nada. Lo que ORIS no hace es prometer cuánto vas a ganar: el resultado de un partido no está bajo el control de nadie.",
+  "t069": "Identificación",
+  "t070": "No existe la mejor opción. Existe la tuya.",
+  "t071": "Eres del tipo que quiere mirar",
+  "t072": "Quieres ver la operación antes de entrar. Quieres entender por qué pasó el filtro. Quieres decidir con la información en la mano.",
+  "t073": "→ Protección",
+  "t074": "Eres del tipo que no quiere mirar",
+  "t075": "No quieres buscar partidos, no quieres seguir la agenda y no quieres configurar nada. Quieres que ocurra sin ti.",
+  "t076": "→ Automatización",
+  "t077": "El mecanismo",
+  "t078": "Antes de llegar hasta ti, la operación está rechazada hasta que demuestre lo contrario.",
+  "t079": "Agenda del día",
+  "t080": "Análisis",
+  "t081": "Criterios",
+  "t082": "Filtro",
+  "t083": "Elegibles",
+  "t084": "Tú",
+  "t085": "Un sistema que aprueba todo no está filtrando nada.",
+  "t086": "En ORIS, decir no a una operación también es parte de la tecnología.",
+  "t087": "Lo que esto te cuesta",
+  "t088": "No todos los partidos llegan hasta ti. Y ese es justamente el punto.",
+  "t089": "La mayor parte de la agenda de un día normal se rechaza antes de aparecer en tu pantalla. No por falta de partidos — por falta de criterio cumplido en ese partido.",
+  "t090": "<strong>Esto tiene un costo real para ti:</strong> vas a ver menos operaciones de las que verías en cualquier grupo por ahí.",
+  "t091": "Y hay un motivo. Una estructura solo funciona sobre lo que pasó por un filtro. Ofrecer estructura sobre todo sería ofrecer algo que no se sostiene.",
+  "t092": "Lado a lado",
+  "t093": "Misma tecnología. Trabajo distinto.",
+  "t094": "Protección",
+  "t095": "Automatización",
+  "t096": "Quién decide entrar",
+  "t097": "Tú",
+  "t098": "La tecnología",
+  "t099": "Quién ejecuta",
+  "t100": "Tú",
+  "t101": "La tecnología",
+  "t102": "Qué configuras",
+  "t103": "Nada — solo decides entrar",
+  "t104": "Nada",
+  "t105": "Tu tiempo por día",
+  "t106": "El de mirar y decidir",
+  "t107": "Ninguno",
+  "t108": "Análisis y filtro ORIS",
+  "t109": "Sí",
+  "t110": "Sí",
+  "t111": "Protección ante el resultado en contra",
+  "t112": "Plazo del reembolso",
+  "t113": "Hasta 24h",
+  "t114": "Hasta 24h",
+  "t115": "La línea de la protección es igual en las dos columnas a propósito.",
+  "t116": "Lo que dicen quienes usan la plataforma",
+  "t117": "Testimonios enviados por usuarios de ORIS",
+  "t118": "Preguntas directas",
+  "t119": "Lo que suele quedar en la cabeza de quien llega ahora",
+  "t120": "Si la operación viene en contra, ¿recibo el importe de vuelta?<span class=\"sign\"></span>",
+  "t121": "<strong>Sí.</strong> La protección vale para todas las operaciones enviadas por ORIS, sin límite de importe.",
+  "t122": "Tú eliges cómo recibirlo: el importe cae directo en tu cuenta bancaria, o se convierte en más protección dentro de la plataforma. El plazo es de hasta 24h después de la resolución del partido.",
+  "t123": "¿Entonces ORIS me está garantizando ganancias?<span class=\"sign\"></span>",
+  "t124": "<strong>No. Son cosas distintas.</strong> La protección devuelve el importe de la operación que vino en contra. Devolver no es ganar.",
+  "t125": "ORIS no controla el resultado de un partido y no promete ganancias. Lo que hace es filtrar lo que llega hasta ti y devolver el importe cuando el resultado viene en contra.",
+  "t126": "Si devuelven el importe de cada operación perdida, ¿de dónde sale ese dinero?<span class=\"sign\"></span>",
+  "t127": "¿ORIS opera en mi lugar?<span class=\"sign\"></span>",
+  "t128": "Depende de la modalidad que elijas.",
+  "t129": "En <strong>Protección</strong>, no: la operación llega analizada y tú decides si entras. En <strong>Automatización</strong>, sí: la tecnología hace la operación entera, sin que configures nada.",
+  "t130": "¿Necesito entender de fútbol para usarlo?<span class=\"sign\"></span>",
+  "t131": "No. Todo el análisis lo hace el sistema antes de que algo llegue hasta ti.",
+  "t132": "En Protección, tu única decisión es entrar o no. En Automatización, ni eso.",
+  "t133": "¿Por qué no aparecen todos los partidos?<span class=\"sign\"></span>",
+  "t134": "Porque la mayor parte de la agenda se rechaza antes. No por falta de partidos — por falta de criterio cumplido en ese partido.",
+  "t135": "Un sistema que aprueba todo no está filtrando nada. Decir no a una operación también es parte de la tecnología.",
+  "t136": "La decisión",
+  "t137": "Ahora ya sabes <em>cómo funciona.</em>",
+  "t138": "Lo único que falta es cuál de las dos es la tuya. Y esa la eliges ahí dentro.",
+  "t139": "Crear mi cuenta en ORIS <span class=\"ar\">→</span>",
+  "t140": "Registro gratuito · toma 2 minutos",
+  "t141": "Tú eliges cómo operar.<span>La tecnología hace el resto.</span>",
+  "t142": "Sin cuenta regresiva. Sin cupos limitados.",
+  "t143": "La protección se aplica únicamente a las operaciones identificadas como elegibles en la plataforma, conforme a los límites y condiciones vigentes. No hay garantía de ganancias. Las operaciones deportivas implican riesgo de pérdida financiera.",
+  "t144": "Contenido destinado a mayores de 18 años.",
+  "t145": "orisclub.com",
+  "t146": "Crear mi cuenta <span>→</span>",
+  "title": "ORIS Club — Dos formas de operar. Una tecnología."
+ },
+ "pt": {
+  "js_a_definir": "— a definir —",
+  "js_pub_com": "Publicidade. Página de divulgação veiculada por {nome}, parceiro remunerado da ORIS Club.",
+  "js_pub_sem": "Publicidade. Página de divulgação veiculada por parceiro remunerado da ORIS Club.",
+  "js_red_zerado": "<s>&minus; R$ 570</s>R$ 0",
+  "js_semana_ok": "Semana preservada",
+  "js_usuario": "Usuário da plataforma",
+  "t001": "<span class=\"dot\"></span>Duas formas de operar · Uma tecnologia",
+  "t002": "A pergunta nunca foi como <em>acertar mais.</em>",
+  "t003": "É como operar melhor. E agora isso tem duas formas.",
+  "t004": "Assista à apresentação. No final você vai saber qual das duas modalidades é a sua.",
+  "t005": "<span class=\"dot\"></span>Apresentação",
+  "t006": "ORIS Club",
+  "t007": "<span class=\"ic\">▶</span>Assista com o som ligado",
+  "t008": "Criar minha conta na ORIS <span class=\"ar\">→</span>",
+  "t009": "Cadastro gratuito · você escolhe a modalidade dentro da plataforma",
+  "t010": "A semana",
+  "t011": "Você não perdeu um jogo. Perdeu a semana.",
+  "t012": "Segunda deu certo. Quarta deu certo. Sexta deu certo. Você fez tudo do jeito que tinha que ser feito.",
+  "t013": "Aí veio domingo. <strong>Noventa minutos.</strong>",
+  "t014": "Segunda",
+  "t015": "+ R$ 180",
+  "t016": "Quarta",
+  "t017": "+ R$ 240",
+  "t018": "Sexta",
+  "t019": "+ R$ 150",
+  "t020": "Domingo",
+  "t021": "− R$ 570",
+  "t022": "<span class=\"dot\"></span>Proteção aplicada · valor reembolsado",
+  "t023": "Exemplo ilustrativo",
+  "t024": "Semana zerada",
+  "t025": "E na segunda de manhã você está exatamente no mesmo lugar de onde saiu sete dias antes.",
+  "t026": "Foi olhando para esse domingo que a ORIS foi construída.",
+  "t027": "Porque quase todo mundo tenta resolver isso do mesmo jeito.",
+  "t028": "A virada",
+  "t029": "Todo mundo tenta acertar mais. A ORIS foi pelo outro lado.",
+  "t030": "Acertar mais é o caminho óbvio. É também o caminho que ninguém controla, porque ninguém controla o resultado de uma partida.",
+  "t031": "A pergunta que a ORIS fez foi outra: <strong>se o erro vai acontecer de qualquer forma, o que dá para fazer com o impacto dele — e com o trabalho que ele te custa?</strong>",
+  "t032": "Mudar a pergunta muda o produto inteiro.",
+  "t033": "Não prometemos que o jogo vai dar green.",
+  "t034": "Mudamos a forma como você participa dele.",
+  "t035": "A empresa",
+  "t036": "Uma empresa de tecnologia que opera no mercado esportivo. Não o contrário.",
+  "t037": "NÃO SOMOS TIPSTER.",
+  "t038": "NÃO SOMOS CURSO.",
+  "t039": "NÃO PROMETEMOS GREEN.",
+  "t040": "SOMOS TECNOLOGIA.",
+  "t041": "O que a ORIS constrói é infraestrutura: análise, critério, filtro e execução.",
+  "t042": "A escolha",
+  "t043": "Você escolhe o quanto quer estar no <em>controle.</em>",
+  "t044": "A ORIS não obriga ninguém a operar de uma única maneira. A tecnologia é a mesma. O que muda é quem aperta o botão.",
+  "t045": "Modalidade 01",
+  "t046": "Proteção",
+  "t047": "Você opera. A ORIS envia a operação analisada, você decide se entra — e se der RED, o valor volta para você.",
+  "t048": "Ver como funciona →",
+  "t049": "Modalidade 02",
+  "t050": "Automação",
+  "t051": "Você não opera. A tecnologia executa tudo por você, do começo ao fim, sem você configurar nada.",
+  "t052": "Ver como funciona →",
+  "t053": "Como funciona",
+  "t054": "A grade do dia inteira passa pelo sistema. O que não atende ao critério é reprovado antes de chegar na sua tela. O que passa, chega até você com a análise pronta — e você decide se entra.",
+  "t055": "<strong>Se a operação der RED, o valor é reembolsado.</strong> A proteção vale para todas as operações enviadas pela ORIS.",
+  "t056": "Para quem é",
+  "t057": "Para quem gosta de olhar a operação antes de entrar. Quem quer decidir. Quem não abre mão do controle.",
+  "t058": "Condições da proteção",
+  "t059": "Quais operações",
+  "t060": "Limite",
+  "t061": "Forma",
+  "t062": "Prazo",
+  "t063": "Como funciona",
+  "t064": "Aqui você não configura nada. Não escolhe estratégia, não define parâmetro, não procura jogo, não acompanha grade e não executa operação.",
+  "t065": "<strong>A tecnologia faz a operação inteira por você.</strong> Do primeiro filtro até o resultado registrado no seu histórico.",
+  "t066": "Para quem é",
+  "t067": "Para quem não quer o trabalho. Quem não tem tempo, não tem paciência de acompanhar jogo, ou simplesmente prefere não decidir operação por operação.",
+  "t068": "<b>A proteção é toda por conta da ORIS.</b> A tecnologia faz a operação inteira e, se o resultado vier contra, o valor volta para você — sem você acionar nada, sem você acompanhar nada. O que a ORIS não faz é prometer quanto você vai ganhar: o resultado de uma partida não está sob o controle de ninguém.",
+  "t069": "Identificação",
+  "t070": "Não existe a melhor opção. Existe a sua.",
+  "t071": "Você é do tipo que quer olhar",
+  "t072": "Quer ver a operação antes de entrar. Quer entender por que ela passou no filtro. Quer decidir com a informação na mão.",
+  "t073": "→ Proteção",
+  "t074": "Você é do tipo que não quer olhar",
+  "t075": "Não quer procurar jogo, não quer acompanhar grade e não quer configurar nada. Quer que aconteça sem você.",
+  "t076": "→ Automação",
+  "t077": "O mecanismo",
+  "t078": "Antes de chegar até você, a operação é reprovada até provar o contrário.",
+  "t079": "Grade do dia",
+  "t080": "Análise",
+  "t081": "Critérios",
+  "t082": "Filtro",
+  "t083": "Elegíveis",
+  "t084": "Você",
+  "t085": "Um sistema que aprova tudo não está filtrando nada.",
+  "t086": "Na ORIS, dizer não para uma operação também faz parte da tecnologia.",
+  "t087": "O que isso te custa",
+  "t088": "Nem todo jogo chega até você. E é esse o ponto.",
+  "t089": "A maior parte da grade de um dia comum é reprovada antes de aparecer na sua tela. Não por falta de jogo — por falta de critério atendido naquele jogo.",
+  "t090": "<strong>Isso tem um custo real para você:</strong> vai ver menos operações do que veria em qualquer grupo por aí.",
+  "t091": "E tem um motivo. Estrutura só funciona sobre o que passou por um filtro. Oferecer estrutura em cima de tudo seria oferecer o que não se sustenta.",
+  "t092": "Lado a lado",
+  "t093": "Mesma tecnologia. Trabalho diferente.",
+  "t094": "Proteção",
+  "t095": "Automação",
+  "t096": "Quem decide entrar",
+  "t097": "Você",
+  "t098": "A tecnologia",
+  "t099": "Quem executa",
+  "t100": "Você",
+  "t101": "A tecnologia",
+  "t102": "O que você configura",
+  "t103": "Nada — só decide entrar",
+  "t104": "Nada",
+  "t105": "Seu tempo por dia",
+  "t106": "O de olhar e decidir",
+  "t107": "Nenhum",
+  "t108": "Análise e filtro ORIS",
+  "t109": "Sim",
+  "t110": "Sim",
+  "t111": "Proteção no RED",
+  "t112": "Prazo do reembolso",
+  "t113": "Até 24h",
+  "t114": "Até 24h",
+  "t115": "A linha da proteção é igual nas duas colunas de propósito.",
+  "t116": "O que dizem quem usa a plataforma",
+  "t117": "Depoimentos enviados por usuários da ORIS",
+  "t118": "Perguntas diretas",
+  "t119": "O que costuma ficar na cabeça de quem chega agora",
+  "t120": "Se a operação der RED, eu recebo o valor de volta?<span class=\"sign\"></span>",
+  "t121": "<strong>Sim.</strong> A proteção vale para todas as operações enviadas pela ORIS, sem limite de valor.",
+  "t122": "Você escolhe como quer receber: o valor cai direto na sua conta bancária, ou é convertido em mais proteção dentro da plataforma. O prazo é de até 24h após a resolução do jogo.",
+  "t123": "Então a ORIS está me garantindo lucro?<span class=\"sign\"></span>",
+  "t124": "<strong>Não. São coisas diferentes.</strong> A proteção devolve o valor da operação que deu RED. Devolver não é ganhar.",
+  "t125": "A ORIS não controla o resultado de uma partida e não promete green. O que ela faz é filtrar o que chega até você e devolver o valor quando o resultado vem contra.",
+  "t126": "Se vocês devolvem o valor de todo RED, de onde sai esse dinheiro?<span class=\"sign\"></span>",
+  "t127": "A ORIS opera no meu lugar?<span class=\"sign\"></span>",
+  "t128": "Depende da modalidade que você escolher.",
+  "t129": "Na <strong>Proteção</strong>, não: a operação chega analisada e você decide se entra. Na <strong>Automação</strong>, sim: a tecnologia faz a operação inteira, sem você configurar nada.",
+  "t130": "Preciso entender de futebol para usar?<span class=\"sign\"></span>",
+  "t131": "Não. Toda a análise é feita pelo sistema antes de qualquer coisa chegar até você.",
+  "t132": "Na Proteção, a sua única decisão é entrar ou não. Na Automação, nem isso.",
+  "t133": "Por que nem todo jogo aparece para mim?<span class=\"sign\"></span>",
+  "t134": "Porque a maior parte da grade é reprovada antes. Não por falta de jogo — por falta de critério atendido naquele jogo.",
+  "t135": "Um sistema que aprova tudo não está filtrando nada. Dizer não para uma operação também faz parte da tecnologia.",
+  "t136": "A decisão",
+  "t137": "Agora você já sabe <em>como funciona.</em>",
+  "t138": "A única coisa que falta é qual das duas é a sua. E essa você escolhe lá dentro.",
+  "t139": "Criar minha conta na ORIS <span class=\"ar\">→</span>",
+  "t140": "Cadastro gratuito · leva 2 minutos",
+  "t141": "Você escolhe como operar.<span>A tecnologia faz o resto.</span>",
+  "t142": "Sem contagem regressiva. Sem vaga limitada.",
+  "t143": "A proteção se aplica somente às operações identificadas como elegíveis na plataforma, conforme limites e condições vigentes. Não há garantia de lucro. Operações esportivas envolvem risco de perda financeira.",
+  "t144": "Conteúdo destinado a maiores de 18 anos.",
+  "t145": "orisclub.com",
+  "t146": "Criar minha conta <span>→</span>",
+  "title": "ORIS Club — Duas formas de operar. Uma tecnologia."
+ }
 };
 
 /* ============================================================ */
@@ -667,9 +1150,54 @@ var LOGO = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVMAAACECAYAAAAtB8hXAA
 (function(){
   document.getElementById("logo").src = LOGO;
 
-  /* ---- afiliado: /CODIGO  ou  ?ref=CODIGO  ou  ?a=CODIGO ---- */
   var params = new URLSearchParams(window.location.search);
 
+  /* ---- idioma: ?lang=  ->  navegador  ->  IDIOMA_PADRAO ---- */
+  function resolverIdioma(){
+    var q = (params.get("lang") || params.get("idioma") || "").toLowerCase().slice(0,2);
+    if (I18N[q]) return q;
+    var nav = (navigator.language || navigator.userLanguage || "").toLowerCase();
+    if (nav.indexOf("pt") === 0) return "pt";
+    if (nav.indexOf("es") === 0) return "es";
+    if (nav.indexOf("en") === 0) return "en";
+    return I18N[CONFIG.IDIOMA_PADRAO] ? CONFIG.IDIOMA_PADRAO : "pt";
+  }
+
+  var LANG = resolverIdioma();
+  var DIC  = I18N[LANG] || I18N.pt;
+
+  function T(chave){
+    var v = DIC[chave];
+    return (v === undefined || v === "") ? (I18N.pt[chave] || "") : v;
+  }
+  // CONFIG é ESTRITO por idioma: nada de cair no português.
+  // Vídeo, depoimento e resposta em PT numa página em espanhol seriam vazamento.
+  function porIdioma(obj){
+    if (!obj) return null;
+    var v = obj[LANG];
+    return (v === undefined) ? null : v;
+  }
+
+  document.documentElement.lang = ({pt:"pt-BR", es:"es", en:"en"})[LANG] || "pt-BR";
+  document.title = T("title");
+
+  document.querySelectorAll("[data-i18n]").forEach(function(el){
+    var txt = T(el.getAttribute("data-i18n"));
+    if (txt) el.innerHTML = txt;
+  });
+
+  /* ---- botões de idioma: link real, mantendo /CODIGO e as UTMs ---- */
+  document.querySelectorAll("#idiomas a").forEach(function(a){
+    var alvo = a.getAttribute("data-lang");
+    var p = new URLSearchParams(window.location.search);
+    p.delete("idioma");
+    p.set("lang", alvo);
+    a.href = window.location.pathname + "?" + p.toString();
+    a.setAttribute("aria-current", alvo === LANG ? "true" : "false");
+    a.setAttribute("hreflang", ({pt:"pt-BR", es:"es", en:"en"})[alvo]);
+  });
+
+  /* ---- afiliado: /CODIGO  ou  ?ref=CODIGO  ou  ?a=CODIGO ---- */
   function limpo(v, tamanho){
     if (!v) return "";
     return String(v).replace(/[^A-Za-z0-9._-]/g, "").slice(0, tamanho || 40);
@@ -702,7 +1230,7 @@ var LOGO = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVMAAACECAYAAAAtB8hXAA
 
   ["cta-1","cta-2","cta-barra"].forEach(function(id){ document.getElementById(id).href = destino; });
 
-  /* ---- vídeo ---- */
+  /* ---- vídeo (um por idioma) ---- */
   function urlDoVideo(u){
     if (!u) return "";
     u = String(u).trim();
@@ -714,7 +1242,7 @@ var LOGO = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVMAAACECAYAAAAtB8hXAA
     return "https://www.youtube-nocookie.com/embed/" + id + "?rel=0&modestbranding=1&playsinline=1";
   }
 
-  var srcVideo = urlDoVideo(CONFIG.VIDEO);
+  var srcVideo = urlDoVideo(porIdioma(CONFIG.VIDEO));
   if (srcVideo){
     document.getElementById("vsl").src = srcVideo;
   } else {
@@ -723,24 +1251,24 @@ var LOGO = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVMAAACECAYAAAAtB8hXAA
   }
 
   /* ---- campos que dependem de decisão sua ---- */
-  var c = CONFIG.condicoes || {}, vazio = "— a definir —";
+  var c = porIdioma(CONFIG.condicoes) || {}, vazio = T("js_a_definir");
   document.getElementById("cond-quais").textContent  = c.quais  || vazio;
   document.getElementById("cond-limite").textContent = c.limite || vazio;
   document.getElementById("cond-forma").textContent  = c.forma  || vazio;
   document.getElementById("cond-prazo").textContent  = c.prazo  || vazio;
 
-  var t = CONFIG.tabela || {};
+  var t = porIdioma(CONFIG.tabela) || {};
   document.getElementById("tab-pro").textContent = t.protecao  || vazio;
   document.getElementById("tab-aut").textContent = t.automacao || vazio;
 
-  var resp = (CONFIG.respostaQuemPaga || "").trim();
+  var resp = (porIdioma(CONFIG.respostaQuemPaga) || "").trim();
   if (resp){
     document.getElementById("resp-quem-paga").textContent = resp;
   } else {
     // sem resposta real, a pergunta sai da página inteira
-    var alvo = document.getElementById("resp-quem-paga");
-    var item = alvo.closest(".item");
-    if (item) item.remove();
+    var alvoResp = document.getElementById("resp-quem-paga");
+    var itemResp = alvoResp.closest(".item");
+    if (itemResp) itemResp.remove();
   }
 
   /* ---- seletor de modalidade: troca conteúdo, nunca o destino ---- */
@@ -759,8 +1287,8 @@ var LOGO = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVMAAACECAYAAAAtB8hXAA
   /* ---- publicidade ---- */
   if (!nomeParceiro) nomeParceiro = limpo(params.get("nome"), 30).replace(/[._-]+/g, " ").trim();
   document.getElementById("aviso-publicidade").textContent = nomeParceiro
-    ? "Publicidade. Página de divulgação veiculada por " + nomeParceiro + ", parceiro remunerado da ORIS Club."
-    : "Publicidade. Página de divulgação veiculada por parceiro remunerado da ORIS Club.";
+    ? T("js_pub_com").replace("{nome}", nomeParceiro)
+    : T("js_pub_sem");
 
   /* ---- esteira de depoimentos ---- */
   function cartaoDepo(d){
@@ -780,14 +1308,14 @@ var LOGO = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVMAAACECAYAAAAtB8hXAA
     var q = document.createElement("div"); q.className = "quem";
     var n = document.createElement("span"); n.className = "n"; n.textContent = d.nome;
     var r = document.createElement("span"); r.className = "r";
-    r.textContent = d.local ? d.local : "Usuário da plataforma";
+    r.textContent = d.local ? d.local : T("js_usuario");
     q.appendChild(n); q.appendChild(r);
     pe.appendChild(av); pe.appendChild(q);
     el.appendChild(pe);
     return el;
   }
 
-  var lista = CONFIG.depoimentos || [];
+  var lista = porIdioma(CONFIG.depoimentos) || [];
   if (lista.length){
     var meio = Math.ceil(lista.length/2);
     [[document.getElementById("trilho-a"), lista.slice(0,meio)],
@@ -834,9 +1362,9 @@ var LOGO = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVMAAACECAYAAAAtB8hXAA
     var protege = function(){
       sem.classList.add("protegida");
       document.getElementById("dia-red").classList.add("reembolsada");
-      document.getElementById("valor-red").innerHTML = "<s>&minus; R$ 570</s>R$ 0";
+      document.getElementById("valor-red").innerHTML = T("js_red_zerado");
       document.getElementById("selo-prot").classList.add("on");
-      document.getElementById("res-semana").textContent = "Semana preservada";
+      document.getElementById("res-semana").textContent = T("js_semana_ok");
     };
     if (reduzido){ protege(); }
     else if ("IntersectionObserver" in window){
